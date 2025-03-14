@@ -31,10 +31,10 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "MGC3X30"
 /* USER CODE END Includes */
 
-/* Exported types ------------------------------------------------------------*/
+/* Exported types ------------------------;------------------------------------*/
 /* USER CODE BEGIN ET */
 
 /* USER CODE END ET */
