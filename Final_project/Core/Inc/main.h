@@ -31,8 +31,16 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "lcd.h"
+// #include "lcd.h"
 #include "MGC3X30.h"
+#include "bsp_xpt2046_lcd.h"
+#include "bsp_spi_flash.h"
+#include "fonts.h"
+#include "bsp_led.h"
+#include "bsp_ili9341_lcd.h"
+#include "palette.h"
+#include "ascii.h"
+#include "image.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

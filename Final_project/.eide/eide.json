@@ -5,7 +5,8 @@
   "srcDirs": [
     "Core",
     "Drivers",
-    "Middlewares"
+    "Middlewares",
+    "FATFS"
   ],
   "virtualFolder": {
     "name": "<virtual_root>",
@@ -31,13 +32,14 @@
   "targets": {
     "Debug": {
       "excludeList": [
-        "<virtual_root>/startup_stm32f103xe.s"
+        "<virtual_root>/startup_stm32f103xe.s",
+        "Core/Src/bsp_debug_usart.c"
       ],
       "toolchain": "GCC",
       "compileConfig": {
         "cpuType": "Cortex-M3",
         "floatingPointHardware": "none",
-        "scatterFilePath": "STM32F103VETx_FLASH.ld",
+        "scatterFilePath": "STM32F103VETX_FLASH.ld",
         "useCustomScatterFile": true,
         "storageLayout": {
           "RAM": [],
@@ -75,7 +77,11 @@
           "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2",
           "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3",
           "Drivers/CMSIS/Device/ST/STM32F1xx/Include",
-          "Drivers/CMSIS/Include"
+          "Drivers/CMSIS/Include",
+          "FATFS/Target",
+          "FATFS/App",
+          "Middlewares/Third_Party/FatFs/src",
+          "Middlewares/Third_Party/FatFs/src/drivers"
         ],
         "libList": [],
         "defineList": [
