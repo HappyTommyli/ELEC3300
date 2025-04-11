@@ -27,6 +27,13 @@
 /* USER CODE BEGIN Includes */
 #include"image.h"
 #include"lcd.h" 
+#include "ff.h"
+#include <string.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include "bsp_ili9341_lcd.h"
 
 /* USER CODE END Includes */
 
@@ -136,16 +143,16 @@ void StartDefaultTask(void *argument)
     //  ILI9341_GramScan ( 3 );//LCD 反向扫描
     //  Palette_Init(LCD_SCAN_MODE);
     
-
-    char filepath[256000];
+    
     /* Infinite loop */
     for (;;) {
         osDelay(1);
-        extern const uint8_t gImage_in[]; //声明图片数据数组，大小由定义决定
-        LCD_Draw_Picture_Pro(0, 0, 240, 240, (uint8_t *)gImage_in);
+        extern uint16_t xstr,ystr;
+	    extern char filepath[256];
         XPT2046_TouchEvenHandler();
-        osDelay(1);
-      // open_file_director(filepath);
+        LCD_open_directory(xstr,ystr,filepath);
+      
+        
     }
   /* USER CODE END StartDefaultTask */
 }

@@ -81,6 +81,7 @@ extern uint8_t LCD_SCAN_MODE;
 
 
 /********************************** ÉùÃ÷ ILI934 º¯Êý ***************************************/
+void 					 ILI9341_Write_Data 			 ( uint16_t usData );
 void                     ILI9341_Init                    ( void );
 uint16_t                 ILI9341_ReadID                  ( void );
 void                     ILI9341_Rst                     ( void );

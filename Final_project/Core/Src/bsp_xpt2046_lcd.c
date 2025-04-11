@@ -825,7 +825,11 @@ void XPT2046_TouchDown(strType_XPT2046_Coordinate * touch)
 		return;
 	
 	/***在此处编写自己的触摸按下处理应用***/
-	LCD_Draw_Picture_Pro(0, 0, 240, 240, (uint8_t *)gImage_in);
+	
+    extern uint16_t xstr,ystr;
+	extern char filepath[256];
+	
+	LCD_open_directory(xstr,ystr,filepath);
 	
 	/*处理触摸画板的选择按钮*/
   Touch_Button_Down(touch->x,touch->y);
