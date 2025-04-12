@@ -1828,3 +1828,16 @@ void display_picture(uint16_t x,uint16_t y,uint16_t width,uint16_t height,uint16
 		}
 	}
 }
+
+void LCD_Color_DrawPoint(uint16_t x, uint16_t y, uint16_t color) {
+
+    // 1. 检查坐标是否在屏幕范围内
+    if (x >= ILI9341_LESS_PIXEL || y >= ILI9341_MORE_PIXEL) return;
+
+    // 2. 设置绘图窗口（单像素）
+    ILI9341_OpenWindow(x, y, x, y);
+
+    // 3. 写入颜色数据（16位 RGB565）
+    ILI9341_Write_Data(color >> 8);    // 发送高字节
+    ILI9341_Write_Data(color & 0xFF);  // 发送低字节
+}

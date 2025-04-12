@@ -26,7 +26,6 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include"image.h"
-#include"lcd.h" 
 #include "ff.h"
 #include <string.h>
 #include <ctype.h>
@@ -147,11 +146,7 @@ void StartDefaultTask(void *argument)
     /* Infinite loop */
     for (;;) {
         osDelay(1);
-        extern uint16_t xstr,ystr;
-	    extern char filepath[256];
         XPT2046_TouchEvenHandler();
-        LCD_open_directory(xstr,ystr,filepath);
-      
         
     }
   /* USER CODE END StartDefaultTask */

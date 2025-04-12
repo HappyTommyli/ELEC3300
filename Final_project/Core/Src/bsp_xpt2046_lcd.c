@@ -22,9 +22,11 @@
 #include "palette.h"
 #include <stdio.h> 
 #include <string.h>
-#include"image.h"
+#include <stdint.h>
 #include "in.h"
 #include "ff.h"
+
+
 
 
 
@@ -55,6 +57,9 @@ strType_XPT2046_TouchPara strXPT2046_TouchPara[] = {
 };
 
 volatile uint8_t ucXPT2046_TouchFlag = 0;
+uint16_t xstr = INIT_X,ystr = INIT_Y;
+char filepath[256] = "D:\\ELEC3300 PROJECT\\Final_project\\batch\\t.c";
+// uint16_t pixels[240*16];
 
 
 
@@ -825,19 +830,20 @@ void XPT2046_TouchDown(strType_XPT2046_Coordinate * touch)
 		return;
 	
 	/***在此处编写自己的触摸按下处理应用***/
+	LoadAndDisplayCFile(&xstr,&ystr,filepath);
 	
-    extern uint16_t xstr,ystr;
-	extern char filepath[256];
 	
-	LCD_open_directory(xstr,ystr,filepath);
+    
 	
 	/*处理触摸画板的选择按钮*/
-  Touch_Button_Down(touch->x,touch->y);
+  	Touch_Button_Down(touch->x,touch->y);
   
-  /*处理描绘轨迹*/
-  Draw_Trail(touch->pre_x,touch->pre_y,touch->x,touch->y,&brush);
+  	/*处理描绘轨迹*/
+  	Draw_Trail(touch->pre_x,touch->pre_y,touch->x,touch->y,&brush);
 	
 	/***在上面编写自己的触摸按下处理应用***/
+	
+	
 	
 	
 }
@@ -909,7 +915,118 @@ void XPT2046_TouchEvenHandler(void )
 
 }
 
+/***************************自用函数定义*****************************/
+void open_filedirectory(uint16_t xstr, uint16_t ystr, char filepath[],uint16_t pixels[]){
+    DIR dir; // 目录对象
+    FILINFO fno; // 文件信息对象
+    FRESULT res; // 文件系统结果
+    res = f_opendir(&dir, "D:\\ELEC3300 PROJECT\\Final_project\\batch");
+    if (res == FR_OK)
+    {
+        while (1)
+        {
+            res = f_readdir(&dir, &fno); // 读取目录项
+            if (res != FR_OK || fno.fname[0] == 0) break; // 如果读取失败或到达目录末尾，则退出循环
+            sprintf(filepath, "D:\\ELEC3300 PROJECT\\Final_project\\batch\\%s", fno.fname); // 拼接文件路径        
+        }
+        f_closedir(&dir); // 关闭目录
+    }
+    
+}
 
-/***************************end of file*****************************/
+void LoadAndDisplayCFile(uint16_t *xstr,uint16_t *ystr,const char *filepath) {
+    FIL file;
+	FRESULT res;
+	char buff[LINE_BUFFER_SIZE]; // 单行像素缓冲区
+	uint16_t pixels[5406*2] = {0};
+    uint32_t pixelCount = 0;
+	
+
+	// Open file
+    res = f_open(&file, filepath, FA_READ);
+    if (res != FR_OK) {
+        printf("Failed to open file: %d\n", res);
+        return;
+    }
+
+	// Read file line by line
+	
+    while (f_gets(buff, sizeof(buff), &file) != NULL && pixelCount < LCD_WIDTH * LCD_HEIGHT) {
+		char* p = buff;
+
+        
+		while (*p && pixelCount < LCD_WIDTH * LCD_HEIGHT) {
+            // Skip whitespace
+            while (*p && isspace((unsigned char)*p)) p++;
+            
+            if (!*p) break; // End of line
+            
+            // Check for hex prefix
+            if ((p[0] == '0') && ((p[1] == 'x') || (p[1] == 'X'))) {
+                p += 2; // Skip "0x"
+                
+                if (isxdigit((unsigned char)p[0]) && isxdigit((unsigned char)p[1])) {
+                    char *endptr;
+                    unsigned long val = strtoul(p, &endptr, 16);
+                    
+                    if (endptr > p) { // Successful conversion
+                        pixels[pixelCount++] = (uint16_t)val;
+                        p = endptr;
+                        continue;
+                    }
+                }
+            }
+            p++; // Skip invalid characters
+        }
+    }
+    f_close(&file); 	
+
+	// Display pixels (assuming 240x320 display)
+    if (pixelCount > 0) {
+        ILI9341_OpenWindow(*xstr, *ystr, LCD_WIDTH, LCD_HEIGHT);
+        
+        for (uint16_t y = 0; y < LCD_HEIGHT; y++) {
+            for (uint16_t x = 0; x < LCD_WIDTH; x++) {
+                uint32_t index = y * LCD_WIDTH + x;//记录当前像素点位置
+                if (index < pixelCount) {
+                    ILI9341_Write_Data(pixels[index]);
+                } else {
+                    ILI9341_Write_Data(0x0000); // Default color if out of data
+                }
+            }
+        }
+    }				
+	
+
+}
+	
+
+// void LCD_ShowPicture(uint16_t usXstar,uint16_t usYstar,uint16_t usPicH,uint16_t usPicV,uint8_t ucPicNum)
+// {
+// 	uint32_t uiIndex;
+// 	const unsigned char * pcPic = NULL;
+// 	//设置窗口大小
+// 	ILI9341_OpenWindow(usXstar,usYstar,usPicH,usPicV);
+
+// 	//获取图像数据首地址
+// 	switch (ucPicNum)
+// 	{
+// 		case 1: pcPic = gImage_t;break;
+// 		// case 2: pcPic = gImage_Picture2;break;
+// 		// case 3: pcPic = gImage_Picture3;break;
+// 		default: pcPic = gImage_t;break;
+// 	}
+	
+// 	//逐行写入图片数据
+// 	/*
+// 	因为TFT-LCD屏幕是16位的，即每个像素点的数据是16位，占两个字节，usPicH*usPicV表示图片共有多少个像素点，
+// 	总共的像素点乘以2就表示图片取模数组里字节的个数，如240*320*2 = 153600
+// 	*/
+// 	for(uiIndex=0;uiIndex<usPicH*usPicV*2;uiIndex+=2)
+// 	{
+// 		//因为图片取模时是数据高位在前，每次都是写两个字节（16位），所以要将第一个字节左移8位，再或上第二个字节作低8位
+// 		ILI9341_Write_Data((pcPic[uiIndex]<<8) | pcPic[uiIndex+1]);
+// 	}
+// }
 
 

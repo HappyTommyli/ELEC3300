@@ -132,7 +132,7 @@ void ILI9341_DisplayStringEx_YDir(uint16_t x, 		//×Ö·ûÏÔÊ¾Î»ÖÃx
 
 
 void display_picture(uint16_t x,uint16_t y,uint16_t width,uint16_t height,uint16_t *pic);
-
+void LCD_Color_DrawPoint(uint16_t x, uint16_t y, uint16_t color);
 
 
 
