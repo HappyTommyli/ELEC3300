@@ -20,7 +20,6 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "i2c.h"
-#include "usart.h"
 #include "gpio.h"
 #include "fsmc.h"
 
@@ -90,8 +89,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_FSMC_Init();
-  MX_USART3_Init();
-  MX_I2C1_Init();
+  MX_I2C2_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */

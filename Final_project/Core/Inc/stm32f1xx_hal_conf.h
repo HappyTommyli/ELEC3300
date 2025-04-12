@@ -66,7 +66,7 @@
 #define HAL_SRAM_MODULE_ENABLED
 /*#define HAL_TIM_MODULE_ENABLED   */
 /*#define HAL_UART_MODULE_ENABLED   */
-#define HAL_USART_MODULE_ENABLED
+/*#define HAL_USART_MODULE_ENABLED   */
 /*#define HAL_WWDG_MODULE_ENABLED   */
 
 #define HAL_CORTEX_MODULE_ENABLED
@@ -140,7 +140,7 @@
 #define  USE_HAL_ETH_REGISTER_CALLBACKS         0U /* ETH register callback disabled       */
 #define  USE_HAL_HCD_REGISTER_CALLBACKS         0U /* HCD register callback disabled       */
 #define  USE_HAL_I2C_REGISTER_CALLBACKS         1U /* I2C register callback enabled       */
-#define  USE_HAL_I2S_REGISTER_CALLBACKS         0U /* I2S register callback disabled       */
+#define  USE_HAL_I2S_REGISTER_CALLBACKS         1U /* I2S register callback enabled       */
 #define  USE_HAL_MMC_REGISTER_CALLBACKS         0U /* MMC register callback disabled       */
 #define  USE_HAL_NAND_REGISTER_CALLBACKS        0U /* NAND register callback disabled      */
 #define  USE_HAL_NOR_REGISTER_CALLBACKS         0U /* NOR register callback disabled       */

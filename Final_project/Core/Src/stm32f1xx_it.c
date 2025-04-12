@@ -57,7 +57,7 @@
 /* USER CODE END 0 */
 
 /* External variables --------------------------------------------------------*/
-extern USART_HandleTypeDef husart3;
+extern I2C_HandleTypeDef hi2c2;
 /* USER CODE BEGIN EV */
 
 /* USER CODE END EV */
@@ -183,31 +183,31 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief This function handles EXTI line0 interrupt.
+  * @brief This function handles I2C2 event interrupt.
   */
-void EXTI0_IRQHandler(void)
+void I2C2_EV_IRQHandler(void)
 {
-  /* USER CODE BEGIN EXTI0_IRQn 0 */
+  /* USER CODE BEGIN I2C2_EV_IRQn 0 */
 
-  /* USER CODE END EXTI0_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_0);
-  /* USER CODE BEGIN EXTI0_IRQn 1 */
+  /* USER CODE END I2C2_EV_IRQn 0 */
+  HAL_I2C_EV_IRQHandler(&hi2c2);
+  /* USER CODE BEGIN I2C2_EV_IRQn 1 */
 
-  /* USER CODE END EXTI0_IRQn 1 */
+  /* USER CODE END I2C2_EV_IRQn 1 */
 }
 
 /**
-  * @brief This function handles USART3 global interrupt.
+  * @brief This function handles I2C2 error interrupt.
   */
-void USART3_IRQHandler(void)
+void I2C2_ER_IRQHandler(void)
 {
-  /* USER CODE BEGIN USART3_IRQn 0 */
+  /* USER CODE BEGIN I2C2_ER_IRQn 0 */
 
-  /* USER CODE END USART3_IRQn 0 */
-  HAL_USART_IRQHandler(&husart3);
-  /* USER CODE BEGIN USART3_IRQn 1 */
+  /* USER CODE END I2C2_ER_IRQn 0 */
+  HAL_I2C_ER_IRQHandler(&hi2c2);
+  /* USER CODE BEGIN I2C2_ER_IRQn 1 */
 
-  /* USER CODE END USART3_IRQn 1 */
+  /* USER CODE END I2C2_ER_IRQn 1 */
 }
 
 /* USER CODE BEGIN 1 */

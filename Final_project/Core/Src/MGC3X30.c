@@ -1,11 +1,15 @@
 #include "MGC3X30.h"
 #include "stm32f1xx_hal.h"
+#include "FreeRTOS.h"
+#include "task.h"
+extern I2C_HandleTypeDef hi2c1;
 extern I2C_HandleTypeDef hi2c2;
 
 uint8_t _deviceAddr = 0x42;
 uint8_t position;
 
-
+// version for freertos
+//change the hal_delay 
 void MGC3X30_task(){
 
   // begin();
@@ -103,9 +107,11 @@ void reset()
 {
 
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_RESET);
-  HAL_Delay(250);
+  // HAL_Delay(250);
+   vTaskDelay(pdMS_TO_TICKS(250)); 
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_3, GPIO_PIN_SET);
-  HAL_Delay(2000);
+  // HAL_Delay(2000);
+   vTaskDelay(pdMS_TO_TICKS(2000)); 
 }
 
 uint8_t setRuntimeparameter(uint8_t *pBuf, size_t size)
@@ -126,7 +132,7 @@ uint8_t setRuntimeparameter(uint8_t *pBuf, size_t size)
     data[4 + i] = pBuf[i];
   }
 
-  HAL_I2C_Master_Transmit(&hi2c2, 0x84, data, 4 + size, HAL_MAX_DELAY);
+  HAL_I2C_Master_Transmit(&hi2c2, 0x84, data, 4 + size, 10000);
 
   return size;
 }
@@ -140,11 +146,11 @@ uint8_t read(uint8_t *pBuf, size_t size)
   }
   tsOutput();
   tsWrite(0);
-
-  HAL_I2C_Master_Receive(&hi2c2, 0x85, pBuf, size, HAL_MAX_DELAY);
+  HAL_I2C_Master_Receive(&hi2c2, 0x85, pBuf, size,10000);
   tsWrite(1);
   tsInput();
-  HAL_Delay(5);
+  // // HAL_Delay(5);
+ vTaskDelay(pdMS_TO_TICKS(5)); 
   return size;
 }
 
@@ -326,17 +332,20 @@ void sensorDataRecv(sInfo_t *info,uint16_t *nowTimeStamp,uint16_t *nowTouch)
     {
       while (enableDataOutput() != 0)
       {
-        HAL_Delay(100);
+        // HAL_Delay(100);
+         vTaskDelay(pdMS_TO_TICKS(100)); 
       }
       while (lockDataOutput() != 0)
       {
-        HAL_Delay(100);
+        // HAL_Delay(100);
+         vTaskDelay(pdMS_TO_TICKS(100)); 
       }
     }
   }
   else
   {
-    HAL_Delay(5);
+    // HAL_Delay(5);
+     vTaskDelay(pdMS_TO_TICKS(5)); 
   }
 }
 
@@ -366,11 +375,13 @@ void handle_data(sInfo_t *info,uint8_t *pbuf,uint16_t *nowTimeStamp,uint16_t *no
     {
       while (enableDataOutput() != 0)
       {
-        HAL_Delay(100);
+        // HAL_Delay(100);
+         vTaskDelay(pdMS_TO_TICKS(100)); 
       }
       while (lockDataOutput() != 0)
       {
-        HAL_Delay(100);
+        // HAL_Delay(100);
+         vTaskDelay(pdMS_TO_TICKS(100)); 
       }
     }
 }
