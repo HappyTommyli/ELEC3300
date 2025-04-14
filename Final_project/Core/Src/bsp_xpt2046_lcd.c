@@ -58,7 +58,8 @@ strType_XPT2046_TouchPara strXPT2046_TouchPara[] = {
 
 volatile uint8_t ucXPT2046_TouchFlag = 0;
 uint16_t xstr = INIT_X,ystr = INIT_Y;
-char filepath[256] = "D:\\ELEC3300 PROJECT\\Final_project\\batch\\t.c";
+char filepath[] = "D:\\ELEC3300 PROJECT\\Final_project\\batch\\t.c";
+char test[300];
 // uint16_t pixels[240*16];
 
 
@@ -723,6 +724,8 @@ uint8_t XPT2046_Get_TouchedPoint ( strType_XPT2046_Coordinate * pDisplayCoordina
 
   if ( XPT2046_ReadAdc_Smooth_XY ( & strScreenCoordinate ) )
   {    
+		// ILI9341_DispChar_EN(0, 20, strScreenCoordinate.x);
+		// ILI9341_DispChar_EN(0, 40, strScreenCoordinate.y);
 		pDisplayCoordinate ->x = ( ( pTouchPara[LCD_SCAN_MODE].dX_X * strScreenCoordinate.x ) + ( pTouchPara[LCD_SCAN_MODE].dX_Y * strScreenCoordinate.y ) + pTouchPara[LCD_SCAN_MODE].dX );        
 		pDisplayCoordinate ->y = ( ( pTouchPara[LCD_SCAN_MODE].dY_X * strScreenCoordinate.x ) + ( pTouchPara[LCD_SCAN_MODE].dY_Y * strScreenCoordinate.y ) + pTouchPara[LCD_SCAN_MODE].dY );
 
@@ -824,13 +827,22 @@ uint8_t XPT2046_TouchDetect(void)
   * @retval 无
   */
 void XPT2046_TouchDown(strType_XPT2046_Coordinate * touch)
-{
+{	
 	//若为负值表示之前已处理过
-	if(touch->pre_x == -1 && touch->pre_y == -1)
+	if(touch->pre_x == -1 && touch->pre_y == -1){
 		return;
+	}	
+		
 	
+
 	/***在此处编写自己的触摸按下处理应用***/
-	LoadAndDisplayCFile(&xstr,&ystr,filepath);
+	// open_filedirectory(xstr,ystr,filepath);
+	// LoadAndDisplayCFile(&xstr,&ystr,filepath);
+	
+			
+			   
+	ILI9341_DispChar_EN(0, 20, touch->x);
+	ILI9341_DispChar_EN(0, 40, touch->y);
 	
 	
     
@@ -889,7 +901,8 @@ void XPT2046_TouchEvenHandler(void )
 			//获取触摸坐标
 			XPT2046_Get_TouchedPoint(&cinfo,strXPT2046_TouchPara);
 			
-			//输出调试信息到串口
+			
+			
 			XPT2046_DEBUG("x=%d,y=%d",cinfo.x,cinfo.y);
 			
 			//调用触摸被按下时的处理函数，可在该函数编写自己的触摸按下处理过程
@@ -916,13 +929,29 @@ void XPT2046_TouchEvenHandler(void )
 }
 
 /***************************自用函数定义*****************************/
-void open_filedirectory(uint16_t xstr, uint16_t ystr, char filepath[],uint16_t pixels[]){
-    DIR dir; // 目录对象
+void open_filedirectory(uint16_t xstr, uint16_t ystr, char filepath[]){
+    
+	DIR dir; // 目录对象
     FILINFO fno; // 文件信息对象
     FRESULT res; // 文件系统结果
-    res = f_opendir(&dir, "D:\\ELEC3300 PROJECT\\Final_project\\batch");
+
+	// 1. 挂载文件系统
+    FATFS fs;
+    res = f_mount(&fs, "1:", 1);
+    if (res != FR_OK) {
+		sprintf(test,"Mount failed! Error: %d\n", res);
+        ILI9341_DispString_EN(0, 0, test);
+        return;
+    }
+
+    res = f_opendir(&dir, "0:\\D:\\ELEC3300 PROJECT\\Final_project\\batch");
+	
+	
     if (res == FR_OK)
     {
+		
+
+
         while (1)
         {
             res = f_readdir(&dir, &fno); // 读取目录项
@@ -930,25 +959,29 @@ void open_filedirectory(uint16_t xstr, uint16_t ystr, char filepath[],uint16_t p
             sprintf(filepath, "D:\\ELEC3300 PROJECT\\Final_project\\batch\\%s", fno.fname); // 拼接文件路径        
         }
         f_closedir(&dir); // 关闭目录
+		
     }
     
 }
 
-void LoadAndDisplayCFile(uint16_t *xstr,uint16_t *ystr,const char *filepath) {
-    FIL file;
+void LoadAndDisplayCFile(uint16_t *xstr,uint16_t *ystr,char *filepath) {
+	
+	ILI9341_DispString_EN(0,20,"error2");
+	
+	FIL file;
 	FRESULT res;
 	char buff[LINE_BUFFER_SIZE]; // 单行像素缓冲区
 	uint16_t pixels[5406*2] = {0};
     uint32_t pixelCount = 0;
 	
-
+	
 	// Open file
     res = f_open(&file, filepath, FA_READ);
     if (res != FR_OK) {
-        printf("Failed to open file: %d\n", res);
+        
         return;
     }
-
+	
 	// Read file line by line
 	
     while (f_gets(buff, sizeof(buff), &file) != NULL && pixelCount < LCD_WIDTH * LCD_HEIGHT) {
@@ -979,7 +1012,8 @@ void LoadAndDisplayCFile(uint16_t *xstr,uint16_t *ystr,const char *filepath) {
             p++; // Skip invalid characters
         }
     }
-    f_close(&file); 	
+   
+	f_close(&file); 	
 
 	// Display pixels (assuming 240x320 display)
     if (pixelCount > 0) {

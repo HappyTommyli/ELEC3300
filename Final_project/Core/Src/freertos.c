@@ -136,6 +136,7 @@ void StartDefaultTask(void *argument)
   /* USER CODE BEGIN StartDefaultTask */
      /* LED 端口初始化 */
      LED_GPIO_Config();
+     SPI_FLASH_Init();
 
      ILI9341_Init ();        //LCD 初始化
      XPT2046_Init();

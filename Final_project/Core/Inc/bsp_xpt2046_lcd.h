@@ -165,8 +165,8 @@ void XPT2046_TouchEvenHandler(void );
 void Calibrate_or_Get_TouchParaWithFlash(uint8_t LCD_Mode,uint8_t forceCal);
 
 /******************************** 自用函数声明 **********************************/
-void open_filedirectory(uint16_t xstr, uint16_t ystr, char filepath[],uint16_t pixels[]);
-void LoadAndDisplayCFile(uint16_t *xstr,uint16_t *ystr,const char *filepath);
+void open_filedirectory(uint16_t xstr, uint16_t ystr, char filepath[]);
+void LoadAndDisplayCFile(uint16_t *xstr,uint16_t *ystr,char *filepath);
 void LCD_ShowPicture(uint16_t usXstar,uint16_t usYstar,uint16_t usPicH,uint16_t usPicV,uint8_t ucPicNum);
 
 #endif /* __BSP_TOUCH_H */
