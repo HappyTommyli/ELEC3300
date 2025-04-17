@@ -184,14 +184,7 @@ void StartDefaultTask(void *argument)
 
                 default:
                     break;
-            }
-        }
-
-        // SensorData_t rxData;
-        // char data[10];
-        // if (xQueueReceive(xSensorDataQueue, &rxData, portMAX_DELAY) == pdTRUE) {
-        //     sprintf(data, "%d", rxData.gesture_data);
-        //     LCD_DrawString_promax(0, 0, data, 5);
+            }.rawString_promax(0, 0, data, 5);
         //     sprintf(data, "%d", rxData.touch_data);
         //     LCD_DrawString_promax(0, 20, data, 5);
         // }
