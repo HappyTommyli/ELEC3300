@@ -89,6 +89,7 @@
 #define LINE_BUFFER_SIZE (240*16)
 
 
+
 #define XPT2046_INFO(fmt,arg...)           printf("<<-XPT2046-INFO->> "fmt"\n",##arg)
 #define XPT2046_ERROR(fmt,arg...)          printf("<<-XPT2046-ERROR->> "fmt"\n",##arg)
 #define XPT2046_DEBUG(fmt,arg...)          do{\
@@ -161,13 +162,14 @@ uint8_t XPT2046_Touch_Calibrate( uint8_t LCD_Mode );
 uint8_t XPT2046_Get_TouchedPoint( strType_XPT2046_Coordinate * displayPtr, strType_XPT2046_TouchPara * para );
 void XPT2046_TouchDown(strType_XPT2046_Coordinate * touch);
 void XPT2046_TouchUp(strType_XPT2046_Coordinate * touch);
-void XPT2046_TouchEvenHandler(void );
+void XPT2046_TouchEvenHandler(void);
 void Calibrate_or_Get_TouchParaWithFlash(uint8_t LCD_Mode,uint8_t forceCal);
 
 /******************************** 自用函数声明 **********************************/
 void open_filedirectory(uint16_t xstr, uint16_t ystr, char filepath[]);
 void LoadAndDisplayCFile(uint16_t *xstr,uint16_t *ystr,char *filepath);
 void LCD_ShowPicture(uint16_t usXstar,uint16_t usYstar,uint16_t usPicH,uint16_t usPicV,uint8_t ucPicNum);
-
+void operating_system (strType_XPT2046_Coordinate *program_num);
+void operating_window_Init(void);
 #endif /* __BSP_TOUCH_H */
 

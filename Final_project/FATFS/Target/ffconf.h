@@ -26,6 +26,7 @@
 #include "stm32f1xx_hal.h"
 #include "cmsis_os.h"    /* _FS_REENTRANT set to 1 */
 #include "bsp_driver_sram.h"
+#include <stdlib.h>
 
 /*-----------------------------------------------------------------------------/
 / Functions and Buffer Configurations
@@ -246,6 +247,7 @@
 /      function, must be added to the project. Samples are available in
 /      option/syscall.c.
 /
+
 /  The _FS_TIMEOUT defines timeout period in unit of time tick.
 /  The _SYNC_t defines O/S dependent sync object type. e.g. HANDLE, ID, OS_EVENT*,
 /  SemaphoreHandle_t and etc.. */

@@ -27,6 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include"image.h"
 #include "ff.h"
+#include "fatfs.h"
 #include <string.h>
 #include <ctype.h>
 #include <stdio.h>
@@ -137,9 +138,11 @@ void StartDefaultTask(void *argument)
      /* LED 端口初始化 */
      LED_GPIO_Config();
      SPI_FLASH_Init();
-
+     MX_FATFS_Init();
+     
      ILI9341_Init ();        //LCD 初始化
      XPT2046_Init();
+     operating_window_Init();
     //  ILI9341_GramScan ( 3 );//LCD 反向扫描
     //  Palette_Init(LCD_SCAN_MODE);
     

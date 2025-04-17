@@ -29,7 +29,6 @@
 
 
 
-
 /******************************* 声明 XPT2046 相关的静态函数 ***************************/
 static void                   XPT2046_DelayUS                       ( __IO uint32_t ulCount );
 static void                   XPT2046_WriteCMD                      ( uint8_t ucCmd );
@@ -60,7 +59,7 @@ volatile uint8_t ucXPT2046_TouchFlag = 0;
 uint16_t xstr = INIT_X,ystr = INIT_Y;
 char filepath[] = "D:\\ELEC3300 PROJECT\\Final_project\\batch\\t.c";
 char test[300];
-// uint16_t pixels[240*16];
+
 
 
 
@@ -833,18 +832,14 @@ void XPT2046_TouchDown(strType_XPT2046_Coordinate * touch)
 		return;
 	}	
 		
-	
-
-	/***在此处编写自己的触摸按下处理应用***/
-	// open_filedirectory(xstr,ystr,filepath);
-	// LoadAndDisplayCFile(&xstr,&ystr,filepath);
-	
-			
+		
 			   
 	ILI9341_DispChar_EN(0, 20, touch->x);
 	ILI9341_DispChar_EN(0, 40, touch->y);
 	
-	
+	operating_system(touch);
+	open_filedirectory(0,0,filepath);
+
     
 	
 	/*处理触摸画板的选择按钮*/
@@ -893,6 +888,7 @@ void XPT2046_TouchUp(strType_XPT2046_Coordinate * touch)
 void XPT2046_TouchEvenHandler(void )
 {
 	  static strType_XPT2046_Coordinate cinfo={-1,-1,-1,-1};
+	  
 	
 		if(XPT2046_TouchDetect() == TOUCH_PRESSED)
 		{
@@ -929,6 +925,7 @@ void XPT2046_TouchEvenHandler(void )
 }
 
 /***************************自用函数定义*****************************/
+FATFS fs;   
 void open_filedirectory(uint16_t xstr, uint16_t ystr, char filepath[]){
     
 	DIR dir; // 目录对象
@@ -936,16 +933,16 @@ void open_filedirectory(uint16_t xstr, uint16_t ystr, char filepath[]){
     FRESULT res; // 文件系统结果
 
 	// 1. 挂载文件系统
-    FATFS fs;
-    res = f_mount(&fs, "1:", 1);
+    
+    res = f_mount(&fs, "0:", 1);
+	
+    res = f_opendir(&dir, "0:");
+	
     if (res != FR_OK) {
 		sprintf(test,"Mount failed! Error: %d\n", res);
         ILI9341_DispString_EN(0, 0, test);
         return;
     }
-
-    res = f_opendir(&dir, "0:\\D:\\ELEC3300 PROJECT\\Final_project\\batch");
-	
 	
     if (res == FR_OK)
     {
@@ -956,7 +953,7 @@ void open_filedirectory(uint16_t xstr, uint16_t ystr, char filepath[]){
         {
             res = f_readdir(&dir, &fno); // 读取目录项
             if (res != FR_OK || fno.fname[0] == 0) break; // 如果读取失败或到达目录末尾，则退出循环
-            sprintf(filepath, "D:\\ELEC3300 PROJECT\\Final_project\\batch\\%s", fno.fname); // 拼接文件路径        
+            sprintf(filepath, "0:\\ELEC3300 PROJECT\\Final_project\\batch\\%s", fno.fname); // 拼接文件路径        
         }
         f_closedir(&dir); // 关闭目录
 		
@@ -966,101 +963,53 @@ void open_filedirectory(uint16_t xstr, uint16_t ystr, char filepath[]){
 
 void LoadAndDisplayCFile(uint16_t *xstr,uint16_t *ystr,char *filepath) {
 	
-	ILI9341_DispString_EN(0,20,"error2");
-	
-	FIL file;
-	FRESULT res;
-	char buff[LINE_BUFFER_SIZE]; // 单行像素缓冲区
-	uint16_t pixels[5406*2] = {0};
-    uint32_t pixelCount = 0;
-	
-	
-	// Open file
-    res = f_open(&file, filepath, FA_READ);
-    if (res != FR_OK) {
-        
-        return;
-    }
-	
-	// Read file line by line
-	
-    while (f_gets(buff, sizeof(buff), &file) != NULL && pixelCount < LCD_WIDTH * LCD_HEIGHT) {
-		char* p = buff;
-
-        
-		while (*p && pixelCount < LCD_WIDTH * LCD_HEIGHT) {
-            // Skip whitespace
-            while (*p && isspace((unsigned char)*p)) p++;
-            
-            if (!*p) break; // End of line
-            
-            // Check for hex prefix
-            if ((p[0] == '0') && ((p[1] == 'x') || (p[1] == 'X'))) {
-                p += 2; // Skip "0x"
-                
-                if (isxdigit((unsigned char)p[0]) && isxdigit((unsigned char)p[1])) {
-                    char *endptr;
-                    unsigned long val = strtoul(p, &endptr, 16);
-                    
-                    if (endptr > p) { // Successful conversion
-                        pixels[pixelCount++] = (uint16_t)val;
-                        p = endptr;
-                        continue;
-                    }
-                }
-            }
-            p++; // Skip invalid characters
-        }
-    }
-   
-	f_close(&file); 	
-
-	// Display pixels (assuming 240x320 display)
-    if (pixelCount > 0) {
-        ILI9341_OpenWindow(*xstr, *ystr, LCD_WIDTH, LCD_HEIGHT);
-        
-        for (uint16_t y = 0; y < LCD_HEIGHT; y++) {
-            for (uint16_t x = 0; x < LCD_WIDTH; x++) {
-                uint32_t index = y * LCD_WIDTH + x;//记录当前像素点位置
-                if (index < pixelCount) {
-                    ILI9341_Write_Data(pixels[index]);
-                } else {
-                    ILI9341_Write_Data(0x0000); // Default color if out of data
-                }
-            }
-        }
-    }				
 	
 
 }
 	
 
-// void LCD_ShowPicture(uint16_t usXstar,uint16_t usYstar,uint16_t usPicH,uint16_t usPicV,uint8_t ucPicNum)
-// {
-// 	uint32_t uiIndex;
-// 	const unsigned char * pcPic = NULL;
-// 	//设置窗口大小
-// 	ILI9341_OpenWindow(usXstar,usYstar,usPicH,usPicV);
+void operating_system (strType_XPT2046_Coordinate *program_num){
+	XPT2046_Get_TouchedPoint(program_num,strXPT2046_TouchPara);
+	int num = 0;
 
-// 	//获取图像数据首地址
-// 	switch (ucPicNum)
-// 	{
-// 		case 1: pcPic = gImage_t;break;
-// 		// case 2: pcPic = gImage_Picture2;break;
-// 		// case 3: pcPic = gImage_Picture3;break;
-// 		default: pcPic = gImage_t;break;
-// 	}
+	//左上
+	int x1_1 = 30; int x1_2 = 110; int y1_1 = 30; int y1_2 = 80;
+	//左下
+	int x2_1 = 30; int x2_2 = 110; int y2_1 = 90; int y2_2 = 140;
+	//右上
+	int x3_1 = 130; int x3_2 = 210; int y3_1 = 30; int y3_2 = 80;
+	//右下
+	int x4_1 = 130; int x4_2 = 210; int y4_1 = 90; int y4_2 = 140;
+
 	
-// 	//逐行写入图片数据
-// 	/*
-// 	因为TFT-LCD屏幕是16位的，即每个像素点的数据是16位，占两个字节，usPicH*usPicV表示图片共有多少个像素点，
-// 	总共的像素点乘以2就表示图片取模数组里字节的个数，如240*320*2 = 153600
-// 	*/
-// 	for(uiIndex=0;uiIndex<usPicH*usPicV*2;uiIndex+=2)
-// 	{
-// 		//因为图片取模时是数据高位在前，每次都是写两个字节（16位），所以要将第一个字节左移8位，再或上第二个字节作低8位
-// 		ILI9341_Write_Data((pcPic[uiIndex]<<8) | pcPic[uiIndex+1]);
-// 	}
-// }
+	if((program_num->x>x1_1 && program_num->x<x1_2) && (program_num->y>y1_1 && program_num->y<y1_2)){
+		num = 1;
+	}
+	else if((program_num->x>x2_1 && program_num->x<x2_2) && (program_num->y>y2_1 && program_num->y<y2_2)){
+		num = 2;
+	}
+	else if((program_num->x>x3_1 && program_num->x<x3_2) && (program_num->y>y3_1 && program_num->y<y3_2)){
+		num = 3;
+	}
+	else if((program_num->x>x4_1 && program_num->x<x4_2) && (program_num->y>y4_1 && program_num->y<y4_2)){
+		num = 4;
+	}
+
+	switch (num){
+		case 1 : ILI9341_DispString_EN(0,60,"1");break;
+		case 2 : ILI9341_DispString_EN(0,80,"2");break;
+		case 3 : ILI9341_DispString_EN(0,100,"3");break;
+		case 4 : ILI9341_DispString_EN(0,120,"4");break;
+		default: num = 1;break;
+	} 
 
 
+}
+
+void operating_window_Init(){
+	ILI9341_DrawRectangle(30,30,80,50,BLACK);//1左上
+	ILI9341_DrawRectangle(30,90,80,50,BLACK);//2左下
+	ILI9341_DrawRectangle(130,30,80,50,BLACK);//3右上
+	ILI9341_DrawRectangle(130,90,80,50,BLACK);//4右下
+	
+}
