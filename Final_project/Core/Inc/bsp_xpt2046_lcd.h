@@ -167,7 +167,7 @@ void Calibrate_or_Get_TouchParaWithFlash(uint8_t LCD_Mode,uint8_t forceCal);
 
 /******************************** 自用函数声明 **********************************/
 void open_filedirectory(uint16_t xstr, uint16_t ystr, char filepath[]);
-void LoadAndDisplayCFile(uint16_t *xstr,uint16_t *ystr,char *filepath);
+void LoadAndDisplayCFile(uint16_t x,uint16_t y,char *filepath);
 void LCD_ShowPicture(uint16_t usXstar,uint16_t usYstar,uint16_t usPicH,uint16_t usPicV,uint8_t ucPicNum);
 void operating_system (strType_XPT2046_Coordinate *program_num);
 void operating_window_Init(void);
