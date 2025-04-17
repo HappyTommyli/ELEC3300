@@ -838,8 +838,8 @@ void XPT2046_TouchDown(strType_XPT2046_Coordinate * touch)
 	ILI9341_DispChar_EN(0, 40, touch->y);
 	
 	operating_system(touch);
-	//open_filedirectory(0,0,filepath);
-	LoadAndDisplayCFile(0,20,filepath);
+	open_filedirectory(0,0,filepath);
+
     
 	
 	/*处理触摸画板的选择按钮*/
@@ -903,7 +903,7 @@ void XPT2046_TouchEvenHandler(void )
 			
 			//调用触摸被按下时的处理函数，可在该函数编写自己的触摸按下处理过程
 			XPT2046_TouchDown(&cinfo);
-			 
+			
 			/*更新触摸信息到pre xy*/
 			cinfo.pre_x = cinfo.x; cinfo.pre_y = cinfo.y;  
 
@@ -961,8 +961,7 @@ void open_filedirectory(uint16_t xstr, uint16_t ystr, char filepath[]){
     
 }
 
-void LoadAndDisplayCFile(uint16_t x,uint16_t y,char *filepath) {
-	
+void LoadAndDisplayCFile(uint16_t *xstr,uint16_t *ystr,char *filepath) {
 	FIL fil;
     FRESULT fr;
     UINT bytesRead;
@@ -971,30 +970,30 @@ void LoadAndDisplayCFile(uint16_t x,uint16_t y,char *filepath) {
 	uint8_t buffer_display[20]={};
 	char data[20]={};
 
-    // 1. 打开文件
+    
     fr = f_open(&fil, filepath, FA_READ);
     if (fr != FR_OK) {
-        // 可根据需要添加错误处理（如打印错误码）
+        // ?????????????????????????????
 		ILI9341_DispString_EN(0,0,"error");
         return;
     }
 
-    // 2. 获取文件大小并检查有效性
+    
     fileSize = f_size(&fil);
-    if (fileSize % sizeof(uint16_t) != 0) {  // 必须为uint16_t的整数倍
+    if (fileSize % sizeof(uint16_t) != 0) {  
         f_close(&fil);
 		ILI9341_DispString_EN(8*7,0,"error2");
         return;
     }
 
-    // 3. 分配内存缓冲区
+    
     buffer = (uint16_t*)malloc(fileSize);
     if (!buffer) {
         f_close(&fil);
         return;
     }
 
-    // 4. 读取整个文件内容
+    
     fr = f_read(&fil, buffer, fileSize, &bytesRead);
     if (fr != FR_OK || bytesRead != fileSize) {
         free(buffer);
@@ -1002,18 +1001,20 @@ void LoadAndDisplayCFile(uint16_t x,uint16_t y,char *filepath) {
         return;
     }
 
-    // 5. 关闭文件
+    
     f_close(&fil);
 
-    // 6. 解析数据到xstr和ystr数组
+    
 	for(uint8_t i=0;i<20;++i){
 		buffer_display[i]=buffer[i];
 	}
 	sprintf(data,"%hhn",buffer_display);
-	ILI9341_DispString_EN(x,y,data);
+	ILI9341_DispString_EN(0,0,data);
 
-    // 7. 释放缓冲区
+    
     free(buffer);
+	
+
 }
 	
 

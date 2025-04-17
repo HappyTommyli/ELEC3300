@@ -112,6 +112,7 @@ typedef struct {
 } FATFS;
 
 
+
 /* File object structure (FIL) */
 
 typedef struct {

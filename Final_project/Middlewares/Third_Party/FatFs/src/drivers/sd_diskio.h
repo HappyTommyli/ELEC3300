@@ -1,10 +1,10 @@
 /**
   ******************************************************************************
-  * @file    sram_diskio.h 
+  * @file    sd_diskio.h 
   * @author  MCD Application Team
   * @version V1.4.1
   * @date    14-February-2017
-  * @brief   Header for sram_diskio.c module
+  * @brief   Header for sd_diskio.c module
   ******************************************************************************
   * @attention
   *
@@ -45,16 +45,16 @@
   */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __SRAM_DISKIO_H
-#define __SRAM_DISKIO_H
+#ifndef __SD_DISKIO_H
+#define __SD_DISKIO_H
 
 /* Includes ------------------------------------------------------------------*/
 /* Exported types ------------------------------------------------------------*/
 /* Exported constants --------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
-extern Diskio_drvTypeDef  SRAMDISK_Driver;
+extern Diskio_drvTypeDef  SD_Driver;
 
-#endif /* __SRAM_DISKIO_H */
+#endif /* __SD_DISKIO_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
 
