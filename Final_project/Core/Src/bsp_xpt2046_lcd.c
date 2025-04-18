@@ -57,7 +57,7 @@ strType_XPT2046_TouchPara strXPT2046_TouchPara[] = {
 
 volatile uint8_t ucXPT2046_TouchFlag = 0;
 uint16_t xstr = INIT_X,ystr = INIT_Y;
-char filepath[] = "D:\\ELEC3300 PROJECT\\Final_project\\batch\\t.c";
+char filepath[] = "0:/1.mp4_20250409184207_0001.bin";
 char test[300];
 
 
@@ -832,13 +832,21 @@ void XPT2046_TouchDown(strType_XPT2046_Coordinate * touch)
 		return;
 	}	
 		
-		
-			   
-	ILI9341_DispChar_EN(0, 20, touch->x);
-	ILI9341_DispChar_EN(0, 40, touch->y);
 	
 	operating_system(touch);
-	open_filedirectory(0,0,filepath);
+	FATFS fs;
+	
+	if (f_mount(&fs, "0:", 1) == FR_DISK_ERR) {
+		ILI9341_DispString_EN(0, 0, "Mount Fail");
+	}
+    // if (f_mount(&fs, "0:", 1) != FR_OK) {
+    //     ILI9341_DispString_EN(0, 0, "Mount Fail");
+    //     while(1);
+    // }
+
+    // 调用文件读取函数
+    LoadAndDisplayCFile("0:/1.mp4_20250409184207_0001.bin");
+	
 
     
 	
@@ -961,24 +969,25 @@ void open_filedirectory(uint16_t xstr, uint16_t ystr, char filepath[]){
     
 }
 
-void LoadAndDisplayCFile(uint16_t *xstr,uint16_t *ystr,char *filepath) {
+void LoadAndDisplayCFile(char *filepath) {
 	FIL fil;
     FRESULT fr;
     UINT bytesRead;
     uint32_t fileSize;
     uint16_t *buffer = NULL;
-	uint8_t buffer_display[20]={};
+	// uint16_t buffer_display[20]={};
 	char data[20]={};
+	f_mount(&fs, "0:", 1);
 
-    
+    //打开文件
     fr = f_open(&fil, filepath, FA_READ);
     if (fr != FR_OK) {
-        // ?????????????????????????????
+        
 		ILI9341_DispString_EN(0,0,"error");
         return;
     }
 
-    
+    //检查file大小
     fileSize = f_size(&fil);
     if (fileSize % sizeof(uint16_t) != 0) {  
         f_close(&fil);
@@ -986,30 +995,31 @@ void LoadAndDisplayCFile(uint16_t *xstr,uint16_t *ystr,char *filepath) {
         return;
     }
 
-    
+    //为buffer分配一个内存
     buffer = (uint16_t*)malloc(fileSize);
     if (!buffer) {
         f_close(&fil);
+		ILI9341_DispString_EN(8*7,20,"error3");
         return;
     }
 
-    
+    //读取文件
     fr = f_read(&fil, buffer, fileSize, &bytesRead);
     if (fr != FR_OK || bytesRead != fileSize) {
         free(buffer);
         f_close(&fil);
+		ILI9341_DispString_EN(8*7,40,"error4");
         return;
     }
 
-    
     f_close(&fil);
 
     
-	for(uint8_t i=0;i<20;++i){
-		buffer_display[i]=buffer[i];
-	}
-	sprintf(data,"%hhn",buffer_display);
-	ILI9341_DispString_EN(0,0,data);
+	
+	snprintf(data, sizeof(data), 
+            "D0:%04X", 
+            buffer[0]);
+    ILI9341_DispString_EN(0, 40, data);
 
     
     free(buffer);
@@ -1017,7 +1027,6 @@ void LoadAndDisplayCFile(uint16_t *xstr,uint16_t *ystr,char *filepath) {
 
 }
 	
-
 void operating_system (strType_XPT2046_Coordinate *program_num){
 	XPT2046_Get_TouchedPoint(program_num,strXPT2046_TouchPara);
 	int num = 0;

@@ -34,6 +34,7 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include "bsp_ili9341_lcd.h"
+#include "spi.h"
 
 /* USER CODE END Includes */
 
@@ -139,7 +140,7 @@ void StartDefaultTask(void *argument)
      LED_GPIO_Config();
      SPI_FLASH_Init();
      MX_FATFS_Init();
-     
+     MX_SPI1_Init();
      ILI9341_Init ();        //LCD 初始化
      XPT2046_Init();
      operating_window_Init();
