@@ -834,10 +834,11 @@ void XPT2046_TouchDown(strType_XPT2046_Coordinate * touch)
 		
 	
 	operating_system(touch);
-	FATFS fs;
+	FATFS *fs;
+	fs = malloc(sizeof (FATFS));
 	
-	if (f_mount(&fs, "0:", 1) == FR_DISK_ERR) {
-		ILI9341_DispString_EN(0, 0, "Mount Fail");
+	if (f_mount(fs, "0:", 1) == FR_DISK_ERR) {
+		ILI9341_DispString_EN(0, 0, "123");
 	}
     // if (f_mount(&fs, "0:", 1) != FR_OK) {
     //     ILI9341_DispString_EN(0, 0, "Mount Fail");

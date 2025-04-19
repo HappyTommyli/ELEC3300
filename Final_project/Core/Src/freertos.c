@@ -144,6 +144,7 @@ void StartDefaultTask(void *argument)
      ILI9341_Init ();        //LCD 初始化
      XPT2046_Init();
      operating_window_Init();
+     
     //  ILI9341_GramScan ( 3 );//LCD 反向扫描
     //  Palette_Init(LCD_SCAN_MODE);
     
