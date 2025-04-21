@@ -35,6 +35,7 @@
 #include <stdlib.h>
 #include "bsp_ili9341_lcd.h"
 #include "spi.h"
+#include "ff_gen_drv.h"
 
 /* USER CODE END Includes */
 

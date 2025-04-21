@@ -23,8 +23,9 @@
 #include <stdio.h> 
 #include <string.h>
 #include <stdint.h>
-#include "in.h"
 #include "ff.h"
+#include "ff_gen_drv.h"
+#include "sd_diskio.h"
 
 
 
@@ -38,7 +39,7 @@ static void                   XPT2046_ReadAdc_XY                    ( int16_t * 
 static uint8_t                XPT2046_ReadAdc_Smooth_XY             ( strType_XPT2046_Coordinate * pScreenCoordinate );
 static uint8_t                XPT2046_Calculate_CalibrationFactor   ( strType_XPT2046_Coordinate * pDisplayCoordinate, strType_XPT2046_Coordinate * pScreenSample, strType_XPT2046_Calibration * pCalibrationFactor );
 static void                   ILI9341_DrawCross                     ( uint16_t usX, uint16_t usY );
-
+static void					  testres(FRESULT res);
 
 
 
@@ -57,9 +58,9 @@ strType_XPT2046_TouchPara strXPT2046_TouchPara[] = {
 
 volatile uint8_t ucXPT2046_TouchFlag = 0;
 uint16_t xstr = INIT_X,ystr = INIT_Y;
-char filepath[] = "0:/1.mp4_20250409184207_0001.bin";
+char filepath[] = "0:/image01.bin";
 char test[300];
-
+FATFS fs;	
 
 
 
@@ -834,16 +835,8 @@ void XPT2046_TouchDown(strType_XPT2046_Coordinate * touch)
 		
 	
 	operating_system(touch);
-	FATFS *fs;
-	fs = malloc(sizeof (FATFS));
 	
-	if (f_mount(fs, "0:", 1) == FR_DISK_ERR) {
-		ILI9341_DispString_EN(0, 0, "123");
-	}
-    // if (f_mount(&fs, "0:", 1) != FR_OK) {
-    //     ILI9341_DispString_EN(0, 0, "Mount Fail");
-    //     while(1);
-    // }
+    
 
     // 调用文件读取函数
     LoadAndDisplayCFile("0:/1.mp4_20250409184207_0001.bin");
@@ -934,9 +927,7 @@ void XPT2046_TouchEvenHandler(void )
 }
 
 /***************************自用函数定义*****************************/
-FATFS fs;   
 void open_filedirectory(uint16_t xstr, uint16_t ystr, char filepath[]){
-    
 	DIR dir; // 目录对象
     FILINFO fno; // 文件信息对象
     FRESULT res; // 文件系统结果
@@ -971,6 +962,7 @@ void open_filedirectory(uint16_t xstr, uint16_t ystr, char filepath[]){
 }
 
 void LoadAndDisplayCFile(char *filepath) {
+	
 	FIL fil;
     FRESULT fr;
     UINT bytesRead;
@@ -978,7 +970,12 @@ void LoadAndDisplayCFile(char *filepath) {
     uint16_t *buffer = NULL;
 	// uint16_t buffer_display[20]={};
 	char data[20]={};
-	f_mount(&fs, "0:", 1);
+	
+    //在SD卡挂载文件系统，文件系统挂载时会对SD卡初始化
+	fr = f_mount(&fs,"0:",1);
+	if (fr != FR_OK) {
+		testres(fr);
+	}
 
     //打开文件
     fr = f_open(&fil, filepath, FA_READ);
@@ -987,7 +984,7 @@ void LoadAndDisplayCFile(char *filepath) {
 		ILI9341_DispString_EN(0,0,"error");
         return;
     }
-
+	ILI9341_DispString_EN(0,0,"error");
     //检查file大小
     fileSize = f_size(&fil);
     if (fileSize % sizeof(uint16_t) != 0) {  
@@ -1071,5 +1068,13 @@ void operating_window_Init(){
 	ILI9341_DrawRectangle(30,90,80,50,BLACK);//2左下
 	ILI9341_DrawRectangle(130,30,80,50,BLACK);//3右上
 	ILI9341_DrawRectangle(130,90,80,50,BLACK);//4右下
+	
+}
+
+static void testres(FRESULT res){
+	
+	sprintf(test,"Mount failed! Error: %d\n", res);
+	ILI9341_DispString_EN(0, 0, test);
+	return;
 	
 }

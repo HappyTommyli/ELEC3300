@@ -2644,7 +2644,6 @@ FRESULT f_open (
 			fp->id = fp->fs->id;
 		}
 	}
-
 	LEAVE_FF(dj.fs, res);
 }
 
