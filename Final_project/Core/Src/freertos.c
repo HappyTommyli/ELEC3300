@@ -145,16 +145,17 @@ void StartDefaultTask(void *argument)
      ILI9341_Init ();        //LCD 初始化
      XPT2046_Init();
      operating_window_Init();
-     
+
+
     //  ILI9341_GramScan ( 3 );//LCD 反向扫描
     //  Palette_Init(LCD_SCAN_MODE);
-    
-    
+
+
     /* Infinite loop */
     for (;;) {
         osDelay(1);
-        XPT2046_TouchEvenHandler();
         
+        XPT2046_TouchEvenHandler();
     }
   /* USER CODE END StartDefaultTask */
 }
@@ -169,7 +170,7 @@ void StartDefaultTask(void *argument)
 void StartTask02(void *argument)
 {
   /* USER CODE BEGIN StartTask02 */
-  
+
 
   /* Infinite loop */
   for(;;)
