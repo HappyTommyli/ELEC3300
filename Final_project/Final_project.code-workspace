@@ -18,13 +18,15 @@
             "*.c++": "cpp",
             "*.cpp": "cpp",
             "*.cxx": "cpp",
-            "*.cc": "cpp"
+            "*.cc": "cpp",
+            "compare": "c"
         },
         "[yaml]": {
             "editor.insertSpaces": true,
             "editor.tabSize": 4,
             "editor.autoIndent": "advanced"
-        }
+        },
+        "cortex-debug.variableUseNaturalFormat": false
     },
     "extensions": {
         "recommendations": [
@@ -40,6 +42,33 @@
             "alefragnani.project-manager",
             "dan-c-underwood.arm",
             "marus25.cortex-debug"
+        ]
+    },
+    "launch": {
+        "version": "0.2.0",
+        "configurations": [
+            {
+                "cwd": "${workspaceFolder}",
+                "executable": "./bin/executable.elf",
+                "name": "Debug with ST-Link",
+                "request": "launch",
+                "type": "cortex-debug",
+                "runToEntryPoint": "main",
+                "showDevDebugOutput": "none",
+                "servertype": "stlink"
+            },
+        {
+            "cwd": "${workspaceRoot}",
+            "executable": "./bin/executable.elf",
+            "name": "Debug with OpenOCD",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "configFiles": [],
+            "searchDir": [],
+            "runToEntryPoint": "main",
+            "showDevDebugOutput": "none"
+        }
         ]
     }
 }

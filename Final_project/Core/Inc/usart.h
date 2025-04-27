@@ -32,20 +32,22 @@ extern "C" {
 
 /* USER CODE END Includes */
 
-extern USART_HandleTypeDef husart3;
+extern UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
 
-void MX_USART3_Init(void);
+void MX_USART1_UART_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 
+void Send_AT_Command(const char *cmd, uint32_t delay_ms);
+void ESP8266_Config();
+void send_data(const char *data);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
-}
 #endif
 
 #endif /* __USART_H__ */

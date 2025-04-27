@@ -3,7 +3,9 @@
 
 #include "stm32f1xx_hal.h"
 #include "main.h"
-
+#include "FreeRTOS.h"
+#include "task.h"
+#include "cmsis_os.h"
 
 
 typedef struct
@@ -14,7 +16,7 @@ typedef struct
   uint16_t xPosition;    /**< X-axis position information */
   uint16_t yPosition;    /**< Y-axis position information */
   uint16_t zPosition;    /**< Z-axis position information */
-} sInfo_t;
+} __attribute__((packed)) sInfo_t;
 
 /**
  * @enum eErrorCode_t
@@ -73,9 +75,7 @@ typedef enum
 
 
 
-  void MGC3X30_task();
 
-  void handle_data(sInfo_t *info,uint8_t *pbuf ,uint16_t *nowTimeStamp,uint16_t *nowTouch);
 
   void reset_info(sInfo_t *info);
   /**
