@@ -122,145 +122,34 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 
 /* USER CODE BEGIN 1 */
 
-void send_AT_command(const char *cmd) {
-    HAL_UART_Transmit(&huart1, (uint8_t *)cmd, strlen(cmd), HAL_MAX_DELAY);
-    HAL_UART_Transmit(&huart1, (uint8_t *)"\r\n", 2, HAL_MAX_DELAY);
+void Send_AT_Command(const char *cmd, uint32_t delay_ms)
+{
+    HAL_UART_Transmit(&huart1, (uint8_t *)cmd, strlen(cmd), 1000);
+    vTaskDelay(pdMS_TO_TICKS(delay_ms));
 }
 
-void ESP8266_AutoConfig() {
-    // ??? AP ??
-    send_AT_command("AT+CWMODE=2");
-    // ??????
-    send_AT_command("AT+CWSAP=\"ESP_Ethan\",\"12345678\",5,3");
-    // ?????
-    send_AT_command("AT+CIPMUX=1");
-    // ?? TCP ???
-    send_AT_command("AT+CIPSERVER=1,8080");
+void ESP8266_Config()
+{
+
+    Send_AT_Command("AT+CWMODE=2\r\n", 1000);
+
+    Send_AT_Command("AT+CWSAP=\"Ethan_ESP\",\"12345678\",5,3\r\n", 1000);
+
+    Send_AT_Command("AT+CIPMUX=1\r\n", 500);
+
+    Send_AT_Command("AT+CIPSERVER=1,8080\r\n", 500);
+
+    Send_AT_Command("AT+CIPMODE=1\r\n", 500);
+}
+
+void send_data(const char *data)
+{
+    Send_AT_Command("AT+CIPSEND=0,1\r\n", 500);
+    HAL_UART_Transmit(&huart1, (uint8_t *)data, 1, 0xFFFFFF);
+    vTaskDelay(pdMS_TO_TICKS(100));
 }
 
 
 
-
-  
-
-    
-
-
-
-
-// void send_to_Usart3(char *cmd)
-// {
-//     HAL_USART_Transmit(&husart3, (uint8_t *)cmd, strlen(cmd), 0xFFFF);
-//     while (HAL_USART_GetState(&husart3) == HAL_USART_STATE_BUSY_RX); // �?测USART坑�?�结�?
-// }
-
-// void show_Usart3_Message()
-// {
-//     HAL_USART_Transmit(&husart1, (uint8_t *)&RxBuffer3, USART3_Rx_Cnt, 0xFFFF); // 将收到的信杯坑�?�出�?
-//     while (HAL_USART_GetState(&husart1) == HAL_USART_STATE_BUSY_TX);            // �?测USART坑�?�结�?
-//     USART3_Rx_Cnt = 0;
-//     memset(RxBuffer3, 0x00, sizeof(RxBuffer3)); // 清空数组
-// }
-
-// void HAL_USART_RxCpltCallback(USART_HandleTypeDef *hUSART)
-// {
-//     if (hUSART->Instance == USART1) {
-//         if (USART1_Rx_Cnt >= (RXBUFFERSIZE - 1)) { // 溢出判断
-//             USART1_Rx_Cnt = 0;
-//             memset(RxBuffer1, 0x00, sizeof(RxBuffer1));
-//             HAL_USART_Transmit(&husart1, (uint8_t *)"数杮溢出", 10, 0xFFFF);
-//         } else {
-//             RxBuffer1[USART1_Rx_Cnt++] = aRxBuffer1; // 接收数杮转存
-//             // HAL_USART_Transmit(&husart3, (uint8_t *)test, sizeof(test),0xFFFF);
-
-//             /*
-//             if((RxBuffer1[USART1_Rx_Cnt-1] == 0x0A)&&(RxBuffer1[USART1_Rx_Cnt-2] == 0x0D)){ //判断结束�?
-//                 HAL_USART_Transmit(&husart3, (uint8_t *)&RxBuffer1, USART1_Rx_Cnt,0xFFFF); //将收到的信杯坑�?�出�?
-//                 while(HAL_USART_GetState(&husart3) == HAL_USART_STATE_BUSY_TX);//�?测USART坑�?�结�?
-//                 USART1_Rx_Cnt = 0;
-//                 memset(RxBuffer1,0x00,sizeof(RxBuffer1)); //清空数组
-//             }
-//             */
-//         }
-//         HAL_USART_Receive_IT(&husart1, (uint8_t *)&aRxBuffer1, 1); // 冝开坯接收中�?
-        
-//     }
-//     if (hUSART->Instance == USART3) {
-//         if (USART3_Rx_Cnt >= (RXBUFFERSIZE - 1)) { // 溢出判断
-//             USART3_Rx_Cnt = 0;
-//             memset(RxBuffer3, 0x00, sizeof(RxBuffer3));
-//             HAL_USART_Transmit(&husart1, (uint8_t *)"数杮溢出", 10, 0xFFFF);
-//         } else {
-//             RxBuffer3[USART3_Rx_Cnt++] = aRxBuffer3; // 接收数杮转存
-//             /*
-//             if(((RxBuffer3[USART3_Rx_Cnt-1] == 0x0A)&&(RxBuffer3[USART3_Rx_Cnt-2] == 0x0D))){ //判断结束�?
-//                 HAL_USART_Transmit(&husart1, (uint8_t *)&RxBuffer3, USART3_Rx_Cnt,0xFFFF); //将收到的信杯坑�?�出�?
-//                 while(HAL_USART_GetState(&husart1) == HAL_USART_STATE_BUSY_TX);//�?测USART坑�?�结�?
-//                 USART3_Rx_Cnt = 0;
-//                 memset(RxBuffer3,0x00,sizeof(RxBuffer3)); //清空数组
-//             }
-//             */
-//         }
-//         HAL_USART_Receive_IT(&husart3, (uint8_t *)&aRxBuffer3, 1); // 冝开坯接收中�?
-//     }
-// }
-
-
-
-    // HAL_Delay(2000);
-    // show_Usart3_Message();
-
-    // char cmd1[] = "AT+CWLAP\r\n";
-    // send_to_Usart3(cmd1);
-    // HAL_Delay(10000);
-    // show_Usart3_Message();
-
-    // char cmd2[] = "AT+CWJAP=\"Redmi K30\",\"lpnb6666\"\r\n";
-    // send_to_Usart3(cmd2);
-    // HAL_Delay(20000);
-    // show_Usart3_Message();
-
-    // char cmd4[] = "AT+CIPMUX=0\r\n";
-    // send_to_Usart3(cmd4);
-    // HAL_Delay(3000);
-    // show_Usart3_Message();
-
-    // char cmd5[] = "AT+CIPMODE=1\r\n";
-    // send_to_Usart3(cmd5);
-    // HAL_Delay(3000);
-    // show_Usart3_Message();
-
-    // char cmd3[] = "AT+CIFSR\r\n";
-    // send_to_Usart3(cmd3);
-    // HAL_Delay(3000);
-    // show_Usart3_Message();
-
-    // send_to_Usart3("AT+CIPSTART=\"TCP\",\"192.168.43.193\",8899\r\n");
-    // HAL_Delay(10000);
-    // show_Usart3_Message();
-
-    // send_to_Usart3("AT+CIPSEND\r\n");
-    // HAL_Delay(3000);
-    // show_Usart3_Message();
-
-    // send_to_Usart3(">\r\n");
-    // HAL_Delay(3000);
-    // show_Usart3_Message();
-
-    // send_to_Usart3("lp\r\n");
-    // HAL_Delay(3000);
-    // show_Usart3_Message();
-
-    // send_to_Usart3("123456\r\n");
-    // HAL_Delay(3000);
-    // show_Usart3_Message();
-
-    // send_to_Usart3("hello everyone\r\n");
-    // HAL_Delay(3000);
-    // show_Usart3_Message();
-
-    // send_to_Usart3("+++");
-    // HAL_Delay(3000);
-    // show_Usart3_Message();
 
 /* USER CODE END 1 */
