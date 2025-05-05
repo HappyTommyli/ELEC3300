@@ -47,39 +47,7 @@ void MX_SDIO_SD_Init(void)
   hsd.Init.HardwareFlowControl = SDIO_HARDWARE_FLOW_CONTROL_DISABLE;
   hsd.Init.ClockDiv = 36;
   /* USER CODE BEGIN SDIO_Init 2 */
-  // if( hsd.ErrorCode ==  SDMMC_ERROR_NONE )
-	// {
-  //   char test2[64];
-	//   sprintf(test2,"SD cara init OK  size %d M\r\n",(float)hsd.SdCard.BlockNbr * hsd.SdCard.BlockSize*1024);
-  //   ILI9341_DispString_EN(0, 0, test2);
-	//    static uint8_t  sd_read_buff[512] ,  sd_write_buff[512]  ;
-	// 	 uint16_t	 i;
-  //    for (i = 0 ; i < 512 ; i ++)
-  //    {
-	// 	    sd_write_buff[i] = i;
-	// 		  sd_read_buff[i]  = 0;
-	// 	 }
-  //    HAL_SD_WriteBlocks(&hsd,sd_write_buff,1000,1,100);			 
-	// 	 HAL_Delay(10);
-	// 	 while(HAL_SD_GetCardState(&hsd) != HAL_SD_CARD_TRANSFER);  		 
-	//    HAL_SD_ReadBlocks(&hsd,sd_read_buff,1000,1,100)  ;			 
-	// 	 for (i = 0 ; i < 512 ; i ++)
-  //    {
-	// 	    if( sd_read_buff[i] != i%256)  
-	// 			{
-	// 			   ILI9341_DispString_EN(0,20,"SD cara  read write test fail \r\n");
-	// 				 break;
-	// 			}
-	// 	 }
-	// 	 if(i == 512)
-	// 	 {
-	// 	    ILI9341_DispString_EN(0,40,"SD cara  read write  test OK \r\n");
-	// 	 }
-	// }
-	// else
-	// {
-	//    ILI9341_DispString_EN(0,60,"SD cara init fail \r\n");
-	// }
+
   /* USER CODE END SDIO_Init 2 */
 
 }

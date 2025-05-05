@@ -77,7 +77,7 @@
           "Middlewares/Third_Party/FatFs/src",
           "Middlewares/Third_Party/FatFs/src/drivers",
           "Middlewares/Third_Party/FreeRTOS/Source/include",
-          "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS",
+          "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2",
           "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3"
         ],
         "libList": [],

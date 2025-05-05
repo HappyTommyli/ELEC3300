@@ -1,26 +1,29 @@
 /* USER CODE BEGIN Header */
 /**
-  ******************************************************************************
-  * @file    usart.c
-  * @brief   This file provides code for the configuration
-  *          of the USART instances.
-  ******************************************************************************
-  * @attention
-  *
-  * Copyright (c) 2025 STMicroelectronics.
-  * All rights reserved.
-  *
-  * This software is licensed under terms that can be found in the LICENSE file
-  * in the root directory of this software component.
-  * If no LICENSE file comes with this software, it is provided AS-IS.
-  *
-  ******************************************************************************
-  */
+ ******************************************************************************
+ * @file    usart.c
+ * @brief   This file provides code for the configuration
+ *          of the USART instances.
+ ******************************************************************************
+ * @attention
+ *
+ * Copyright (c) 2025 STMicroelectronics.
+ * All rights reserved.
+ *
+ * This software is licensed under terms that can be found in the LICENSE file
+ * in the root directory of this software component.
+ * If no LICENSE file comes with this software, it is provided AS-IS.
+ *
+ ******************************************************************************
+ */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
+
+
+
 
 /* USER CODE END 0 */
 
@@ -113,5 +116,35 @@ void HAL_UART_MspDeInit(UART_HandleTypeDef* uartHandle)
 }
 
 /* USER CODE BEGIN 1 */
+
+void Send_AT_Command(const char *cmd, uint32_t delay_ms)
+{
+    HAL_UART_Transmit(&huart1, (uint8_t *)cmd, strlen(cmd), 1000);
+    vTaskDelay(pdMS_TO_TICKS(delay_ms));
+}
+
+void ESP8266_Config()
+{
+
+    Send_AT_Command("AT+CWMODE=2\r\n", 1000);
+
+    Send_AT_Command("AT+CWSAP=\"Ethan_ESP\",\"12345678\",5,3\r\n", 1000);
+
+    Send_AT_Command("AT+CIPMUX=1\r\n", 500);
+
+    Send_AT_Command("AT+CIPSERVER=1,8080\r\n", 500);
+
+    Send_AT_Command("AT+CIPMODE=1\r\n", 500);
+}
+
+void send_data(const char *data)
+{
+    Send_AT_Command("AT+CIPSEND=0,1\r\n", 500);
+    HAL_UART_Transmit(&huart1, (uint8_t *)data, 1, 0xFFFFFF);
+    vTaskDelay(pdMS_TO_TICKS(100));
+}
+
+
+
 
 /* USER CODE END 1 */

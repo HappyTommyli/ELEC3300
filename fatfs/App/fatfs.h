@@ -1,9 +1,8 @@
 /* USER CODE BEGIN Header */
 /**
   ******************************************************************************
-  * @file    usart.h
-  * @brief   This file contains all the function prototypes for
-  *          the usart.c file
+  * @file   fatfs.h
+  * @brief  Header for fatfs applications
   ******************************************************************************
   * @attention
   *
@@ -18,38 +17,37 @@
   */
 /* USER CODE END Header */
 /* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __USART_H__
-#define __USART_H__
-
+#ifndef __fatfs_H
+#define __fatfs_H
 #ifdef __cplusplus
-extern "C" {
+ extern "C" {
 #endif
 
-/* Includes ------------------------------------------------------------------*/
-#include "main.h"
+#include "ff.h"
+#include "ff_gen_drv.h"
+#include "sd_diskio.h" /* defines SD_Driver as external */
 
 /* USER CODE BEGIN Includes */
 
 /* USER CODE END Includes */
 
-extern UART_HandleTypeDef huart1;
+extern uint8_t retSD; /* Return value for SD */
+extern char SDPath[4]; /* SD logical drive path */
+extern FATFS SDFatFS; /* File system object for SD logical drive */
+extern FIL SDFile; /* File object for SD */
 
-/* USER CODE BEGIN Private defines */
-
-/* USER CODE END Private defines */
-
-void MX_USART1_UART_Init(void);
+void MX_FATFS_Init(void);
 
 /* USER CODE BEGIN Prototypes */
+void ILI9341_SetWindow(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1);
+void Draw_Point(uint16_t x,uint16_t y,uint16_t color);
+uint16_t  RGB888ToRGB565(uint8_t  r , uint8_t g , uint8_t b);
+void draw_pic ();
 
-void Send_AT_Command(const char *cmd, uint32_t delay_ms);
-void ESP8266_Config();
-void send_data(const char *data);
+void LCD_Draw_Picture_Pro(uint16_t *xstr,uint16_t *ystr,uint16_t sendbyte,uint8_t * pic);
+void LCD_Draw_Picture_Promax  (uint16_t *xstr,uint16_t *ystr,uint16_t sendbyte,uint8_t * pic);
 /* USER CODE END Prototypes */
-
 #ifdef __cplusplus
 }
 #endif
-
-#endif /* __USART_H__ */
-
+#endif /*__fatfs_H */

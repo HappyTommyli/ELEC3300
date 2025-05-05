@@ -29,7 +29,7 @@ uint16_t LCD_Y_LENGTH = ILI9341_MORE_PIXEL;
 //参数可选值为0-7
 //调用ILI9341_GramScan函数设置方向时会自动更改
 //LCD刚初始化完成时会使用本默认值
-uint8_t LCD_SCAN_MODE = 7;
+uint8_t LCD_SCAN_MODE = 6;
 
 //保存液晶屏驱动ic的 ID
 uint16_t lcdid = LCDID_UNKNOWN;

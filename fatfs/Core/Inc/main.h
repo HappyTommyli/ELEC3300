@@ -16,7 +16,6 @@
   *
   ******************************************************************************
   */
- #include "bsp_ili9341_lcd.h"
 /* USER CODE END Header */
 
 /* Define to prevent recursive inclusion -------------------------------------*/
@@ -32,7 +31,17 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include "bsp_ili9341_lcd.h"
+#include "bsp_led.h"
+#include "bsp_spi_flash.h"
+#include "bsp_xpt2046_lcd.h"
+#include "MGC3X30.h"
+#include "usart.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

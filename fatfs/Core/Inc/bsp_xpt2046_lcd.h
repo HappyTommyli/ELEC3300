@@ -3,11 +3,8 @@
 
 
 #include "stm32f1xx.h"
-#include "bsp_ili9341_lcd.h"
-#include <ctype.h>
-#include <string.h>
-#include <stdint.h>
-#include <stdlib.h>
+#include "main.h"
+#include "lcd.h"
 
 
 
@@ -72,19 +69,14 @@
 
 /*信息输出*/
 #define XPT2046_DEBUG_ON         0
-#define INIT_X 0	//起始x坐标
-#define INIT_Y 0	//起始y坐标
-#define	PICTURE_WIDTH 240
-#define PICTURE_HEIGHT	320
-#define TOTAL_BYTE	9600	//一张图片存储的总字节数，一个字节中有8个像素
-#define BUFF_TOTAL_BYTE 512
+
 #define LCD_WIDTH 240
 #define LCD_HEIGHT 320
 //一张图片存储的总位数，即总像素，以300*230的图片为例，像素总个数为：300*230=69000
 //但是为什么软件输出的图像8740*8=69920
 //原因：图像的宽度300，即300个像素点，8个像素点对应一个字节，300\8=37余4，余下的4个像素被装入了一个字节的前四位中，后四位补0
 //因此：一行相当于38个字节一共230行，总字节数：38*230=8740，多出来了：230*4=920补0像素
-#define TOTAL_BIT		TOTAL_BYTE*8
+
 #define CHUNK_ROWS 40 
 #define LINE_BUFFER_SIZE (240*16)
 
@@ -166,8 +158,6 @@ void XPT2046_TouchEvenHandler(void);
 void Calibrate_or_Get_TouchParaWithFlash(uint8_t LCD_Mode,uint8_t forceCal);
 
 /******************************** 自用函数声明 **********************************/
-void open_filedirectory(uint16_t xstr, uint16_t ystr, char filepath[]);
-void LoadAndDisplayCFile(char *filepath);
 void operating_system (strType_XPT2046_Coordinate *program_num);
 void operating_window_Init(void);
 #endif /* __BSP_TOUCH_H */
