@@ -32,10 +32,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "MGC3X30.h"
-#include <string.h>
-#include "usart.h"
-#include "bsp_ili9341_lcd.h"
+
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

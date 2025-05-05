@@ -22,10 +22,8 @@
 #include "cmsis_os.h"
 #include "dma.h"
 #include "fatfs.h"
-#include "i2c.h"
 #include "sdio.h"
 #include "spi.h"
-#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 #include "fsmc.h"
@@ -390,7 +388,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-//   ILI9341_Init();
+
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -401,8 +399,6 @@ int main(void)
   MX_FATFS_Init();
   MX_SPI2_Init();
   MX_USART1_UART_Init();
-  MX_I2C2_Init();
-  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
     
 
@@ -410,9 +406,6 @@ int main(void)
  
   
   /* USER CODE END 2 */
-
-  /* Init scheduler */
-  osKernelInitialize();
 
   /* Call init function for freertos objects (in cmsis_os2.c) */
   MX_FREERTOS_Init();
