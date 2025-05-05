@@ -26,7 +26,6 @@
 #include "ff.h"
 #include "ff_gen_drv.h"
 #include "sd_diskio.h" /* defines SD_Driver as external */
-#include "user_diskio.h" /* defines USER_Driver as external */
 
 /* USER CODE BEGIN Includes */
 
@@ -36,15 +35,17 @@ extern uint8_t retSD; /* Return value for SD */
 extern char SDPath[4]; /* SD logical drive path */
 extern FATFS SDFatFS; /* File system object for SD logical drive */
 extern FIL SDFile; /* File object for SD */
-extern uint8_t retUSER; /* Return value for USER */
-extern char USERPath[4]; /* USER logical drive path */
-extern FATFS USERFatFS; /* File system object for USER logical drive */
-extern FIL USERFile; /* File object for USER */
 
 void MX_FATFS_Init(void);
 
 /* USER CODE BEGIN Prototypes */
+void ILI9341_SetWindow(uint16_t x0, uint16_t y0, uint16_t x1, uint16_t y1);
+void Draw_Point(uint16_t x,uint16_t y,uint16_t color);
+uint16_t  RGB888ToRGB565(uint8_t  r , uint8_t g , uint8_t b);
+char WS_TFT_Load_Pic_Bmp(uint16_t x,uint16_t y, char  *path );
 
+void LCD_Draw_Picture_Pro(uint16_t *xstr,uint16_t *ystr,uint16_t sendbyte,uint8_t * pic);
+void LCD_Draw_Picture_Promax  (uint16_t *xstr,uint16_t *ystr,uint16_t sendbyte,uint8_t * pic);
 /* USER CODE END Prototypes */
 #ifdef __cplusplus
 }

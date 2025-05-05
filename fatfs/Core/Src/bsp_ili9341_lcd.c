@@ -29,7 +29,7 @@ uint16_t LCD_Y_LENGTH = ILI9341_MORE_PIXEL;
 //参数可选值为0-7
 //调用ILI9341_GramScan函数设置方向时会自动更改
 //LCD刚初始化完成时会使用本默认值
-uint8_t LCD_SCAN_MODE = 6;
+uint8_t LCD_SCAN_MODE = 7;
 
 //保存液晶屏驱动ic的 ID
 uint16_t lcdid = LCDID_UNKNOWN;
@@ -1835,9 +1835,10 @@ void LCD_Color_DrawPoint(uint16_t x, uint16_t y, uint16_t color) {
     if (x >= ILI9341_LESS_PIXEL || y >= ILI9341_MORE_PIXEL) return;
 
     // 2. 设置绘图窗口（单像素）
-    ILI9341_OpenWindow(x, y, x, y);
+    ILI9341_SetCursor(x, y);
 
     // 3. 写入颜色数据（16位 RGB565）
+	ILI9341_Write_Cmd(CMD_SetPixel); // 设置像素命令
     ILI9341_Write_Data(color >> 8);    // 发送高字节
     ILI9341_Write_Data(color & 0xFF);  // 发送低字节
 }

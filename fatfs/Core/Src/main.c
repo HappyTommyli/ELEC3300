@@ -19,10 +19,13 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "cmsis_os.h"
 #include "dma.h"
 #include "fatfs.h"
+#include "i2c.h"
 #include "sdio.h"
 #include "spi.h"
+#include "tim.h"
 #include "usart.h"
 #include "gpio.h"
 #include "fsmc.h"
@@ -50,6 +53,7 @@
 #include "diskio.h"     /* Declarations of disk functions */
 #include "bsp_driver_sd.h"
 #include "bsp_spi_flash.h"
+#include "lcd.h"
 
 
 
@@ -346,6 +350,7 @@ int test_diskio (
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
  
 /* USER CODE END PFP */
@@ -363,6 +368,12 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+    DWORD fileSize;  // 文件大小，方便验证
+    uint8_t buff[BUFF_TOTAL_BYTE];
+    uint8_t res=0, x=0;	
+    uint16_t xstr=INIT_X,ystr=INIT_Y;
+    UINT brr;
+    uint32_t move=0;
  
   /* USER CODE END 1 */
 
@@ -379,29 +390,76 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
+//   ILI9341_Init();
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_FSMC_Init();
-  ILI9341_Init();
   MX_SDIO_SD_Init();
   MX_FATFS_Init();
   MX_SPI2_Init();
   MX_USART1_UART_Init();
+  MX_I2C2_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-
+    
 
   
  
   
   /* USER CODE END 2 */
 
+  /* Init scheduler */
+  osKernelInitialize();
+
+  /* Call init function for freertos objects (in cmsis_os2.c) */
+  MX_FREERTOS_Init();
+
+  /* Start scheduler */
+  osKernelStart();
+
+  /* We should never get here as control is now taken by the scheduler */
+
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    res = f_open(&SDFile, "small.bin", FA_READ);
+        if (res == FR_OK)
+        {
+            // 文件打开成功，进行读取操作.
+            fileSize = f_size(&SDFile);
+            while (1)
+            {
+                for (x = 0; x < ((TOTAL_BYTE % BUFF_TOTAL_BYTE) ? (TOTAL_BYTE / BUFF_TOTAL_BYTE) + 1 : (TOTAL_BYTE / BUFF_TOTAL_BYTE)); x++)
+                {
+                    f_lseek(&SDFile, move);
+                    res = f_read(&SDFile, buff, BUFF_TOTAL_BYTE, &brr);
+
+                    LCD_Draw_Picture_Pro(&xstr, &ystr, brr, buff);
+                    move += brr;
+                    
+                }
+                //printf("xstr=%d,ystr=%d\n",xstr,ystr);
+                //printf("move=%d\n",move);
+                if (brr < BUFF_TOTAL_BYTE) break;
+            }
+
+            f_close(&SDFile);  // 关闭文件
+            move = 0;//复位
+
+        }
+        else {
+            // 文件打开失败，进行错误处理
+            // printf("no ok=%d\n", res);
+            // ...
+        }
+    
+
+
+    
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

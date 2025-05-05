@@ -68,14 +68,17 @@
         "name": "default",
         "incList": [
           "Core/Inc",
-          "FATFS/Target",
-          "FATFS/App",
           "Drivers/STM32F1xx_HAL_Driver/Inc/Legacy",
           "Drivers/STM32F1xx_HAL_Driver/Inc",
+          "Drivers/CMSIS/Device/ST/STM32F1xx/Include",
+          "Drivers/CMSIS/Include",
+          "FATFS/Target",
+          "FATFS/App",
           "Middlewares/Third_Party/FatFs/src",
           "Middlewares/Third_Party/FatFs/src/drivers",
-          "Drivers/CMSIS/Device/ST/STM32F1xx/Include",
-          "Drivers/CMSIS/Include"
+          "Middlewares/Third_Party/FreeRTOS/Source/include",
+          "Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2",
+          "Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3"
         ],
         "libList": [],
         "defineList": [
