@@ -59,11 +59,13 @@
 void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
+void display_in_main(void);
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
 
 /* USER CODE END 0 */
 
@@ -75,6 +77,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+
 
   /* USER CODE END 1 */
 
@@ -122,9 +125,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
-  {
-    
-
+  {    
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -172,6 +173,45 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+void display_in_main(){
+  FIL text;
+  DWORD fileSize;  // 文件大小，方便验证
+  uint8_t buff[BUFF_TOTAL_BYTE];
+  uint8_t res=0, x=0;	
+  uint16_t xstr=INIT_X,ystr=INIT_Y;
+  UINT brr;
+  uint32_t move=0;
+  res = f_open(&text, "down.bin", FA_READ);
+        if (res == FR_OK)
+        {
+            printf("ok\n");
+            // 文件打开成功，进行读取操作.
+            fileSize = f_size(&text);
+            printf("File size: %lu bytes\n", (unsigned long)fileSize);
+            while (1)
+            {
+                for (x = 0; x < (TOTAL_BYTE % BUFF_TOTAL_BYTE ? (TOTAL_BYTE / BUFF_TOTAL_BYTE) + 1 : (TOTAL_BYTE / BUFF_TOTAL_BYTE)); x++)
+                {
+                    f_lseek(&text, move);
+                    res = f_read(&text, buff, BUFF_TOTAL_BYTE, &brr);
+                    LCD_Draw_Picture_Pro(&xstr, &ystr, brr, buff);
+                    move += brr;
+                }
+                //printf("xstr=%d,ystr=%d\n",xstr,ystr);
+                //printf("move=%d\n",move);
+                if (brr < BUFF_TOTAL_BYTE) break;
+            }
+
+            f_close(&text);  // 关闭文件
+            move = 0;//复位
+
+        }
+        else {
+            // 文件打开失败，进行错误处理
+            printf("no ok=%d\n", res);
+            // ...
+        }    
+}
 
 /* USER CODE END 4 */
 

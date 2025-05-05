@@ -23,11 +23,16 @@
 #include "main.h"
 #include "cmsis_os.h"
 
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "queue.h"
 #include "semphr.h"
 #include <stdio.h>
+#include "fatfs.h"
+
+
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -191,8 +196,7 @@ void StartDefaultTask(void *argument)
     // uint16_t rec_Data;
 
     for (;;) {
-        if (mode == mode_Sensor_lcd) {
-           
+        if (mode == mode_Sensor_lcd) {           
             if (xQueueReceive(xSensorDataQueue, &receivedData, portMAX_DELAY) == pdTRUE) {
                 ILI9341_DispString_EN(70, 0, "sensormode_in");
                 switch (receivedData.gesture_data) {
@@ -389,12 +393,49 @@ void StartTask03(void *argument)
 void StartTask04(void *argument)
 {
   /* USER CODE BEGIN StartTask04 */
+  FIL text;
+  DWORD fileSize;  // 文件大小，方便验证
+  uint8_t buff[BUFF_TOTAL_BYTE];
+  uint8_t res=0, x=0;	
+  uint16_t xstr=INIT_X,ystr=INIT_Y;
+  UINT brr;
+  uint32_t move=0;
+
+
   /* Infinite loop */
   for(;;)
   {
-    XPT2046_TouchEvenHandler();
+    res = f_open(&text, "down.bin", FA_READ);
+        if (res == FR_OK)
+        {
+            printf("ok\n");
+            // 文件打开成功，进行读取操作.
+            fileSize = f_size(&text);
+            printf("File size: %lu bytes\n", (unsigned long)fileSize);
+            while (1)
+            {
+                for (x = 0; x < (TOTAL_BYTE % BUFF_TOTAL_BYTE ? (TOTAL_BYTE / BUFF_TOTAL_BYTE) + 1 : (TOTAL_BYTE / BUFF_TOTAL_BYTE)); x++)
+                {
+                    f_lseek(&text, move);
+                    res = f_read(&text, buff, BUFF_TOTAL_BYTE, &brr);
+                    LCD_Draw_Picture_Pro(&xstr, &ystr, brr, buff);
+                    move += brr;
+                }
+                //printf("xstr=%d,ystr=%d\n",xstr,ystr);
+                //printf("move=%d\n",move);
+                if (brr < BUFF_TOTAL_BYTE) break;
+            }
+
+            f_close(&text);  // 关闭文件
+            move = 0;//复位
+
+        }
+        else {
+            // 文件打开失败，进行错误处理
+            printf("no ok=%d\n", res);
+            // ...
+        }    
     osDelay(1);
-    
   }
   /* USER CODE END StartTask04 */
 }
