@@ -93,14 +93,14 @@ osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
   .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
+  .priority = (osPriority_t) osPriorityNormal2,
 };
 /* Definitions for switch_window */
 osThreadId_t switch_windowHandle;
 const osThreadAttr_t switch_window_attributes = {
   .name = "switch_window",
   .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityNormal1,
+  .priority = (osPriority_t) osPriorityNormal2,
 };
 /* Definitions for myTask03 */
 osThreadId_t myTask03Handle;
@@ -226,11 +226,10 @@ void StartDefaultTask(void *argument)
     for (;;) {  
         if (mode == mode_Sensor_PC) {                    
             if (xQueueReceive(xSensorDataQueue, &receivedData, portMAX_DELAY) == pdTRUE) {
-                // ILI9341_DispString_EN(70, 0, "sensormode_in");
                 switch (receivedData.gesture_data) {
                     case eFilckR:
                         /* code */
-                         ILI9341_DispString_EN(0, 0, "r");
+                        //  ILI9341_DispString_EN(0, 0, "r");
                          send_data(&receivedData.gesture_data);
                          gesture_dir_arrow("right.bin");
 
@@ -238,19 +237,19 @@ void StartDefaultTask(void *argument)
                         break;
                     case eFilckL:
                         /* code */
-                        ILI9341_DispString_EN(0, 0, "l");
+                        // ILI9341_DispString_EN(0, 0, "l");
                         send_data(&receivedData.gesture_data);
                         gesture_dir_arrow("left.bin");
                         break;
                     case eFilckU:
                         /* code */
-                        ILI9341_DispString_EN(0, 0, "u");
+                        // ILI9341_DispString_EN(0, 0, "u");
                         send_data(&receivedData.gesture_data);
                         gesture_dir_arrow("up.bin");
                         break;
                     case eFilckD:
                         /* code */
-                        ILI9341_DispString_EN(0, 0, "d");
+                        // ILI9341_DispString_EN(0, 0, "d");
                         send_data(&receivedData.gesture_data);
                         gesture_dir_arrow("down.bin");
                         break;
@@ -450,7 +449,7 @@ void StartTask05(void *argument)
     }
     else{
       gesture_page();
-      
+
     }
     
 

@@ -985,9 +985,15 @@ void operating_gesturepage (strType_XPT2046_Coordinate *program_num){
 		//1£¬Ìôµ½²»Í¬task
 	switch (touchnum){
 		case 1 : 
-		ILI9341_DispString_EN(0,60,"1");toggle_state(&function1);sprintf(test,"%d",function1);ILI9341_DispString_EN(0,200,test);break;		
+		ILI9341_DispString_EN(0,60,"1");toggle_state(&function1);sprintf(test,"%d",function1);ILI9341_DispString_EN(0,200,test);
+		sprintf(test,"mode is %d",mode);
+		ILI9341_DispString_EN(50,0,test);
+		break;		
 		case 2 : 
-		ILI9341_DispString_EN(0,80,"2");toggle_state(&function2);sprintf(test,"%d",function2);ILI9341_DispString_EN(0,220,test);break;
+		ILI9341_DispString_EN(0,80,"2");toggle_state(&function2);sprintf(test,"%d",function2);ILI9341_DispString_EN(0,220,test);
+		sprintf(test,"mode is %d",mode);
+		ILI9341_DispString_EN(70,0,test);
+		break;
 		case 3 : 
 		ILI9341_DispString_EN(0,100,"3");toggle_state(&function2);sprintf(test,"%d",function3);ILI9341_DispString_EN(0,240,test);break;
 		
