@@ -48,6 +48,7 @@ void send_data(const char *data);
 /* USER CODE END Prototypes */
 
 #ifdef __cplusplus
+}
 #endif
 
 #endif /* __USART_H__ */
