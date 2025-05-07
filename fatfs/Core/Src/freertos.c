@@ -56,7 +56,7 @@ QueueHandle_t xSensorDataQueue = NULL;
 #define mode_Wifi_rec   4
 #define mode_Rled       5
 
-uint8_t mode = mode_Sensor_PC;
+uint8_t mode = 0;
 
 uint8_t enable_senor = 0;
 uint8_t enable_wifi  = 0;
@@ -85,7 +85,7 @@ osThreadId_t defaultTaskHandle;
 const osThreadAttr_t defaultTask_attributes = {
   .name = "defaultTask",
   .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityNormal2,
+  .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for switch_window */
 osThreadId_t switch_windowHandle;
@@ -208,9 +208,9 @@ void StartDefaultTask(void *argument)
     for (;;) {      
                 
             if (xQueueReceive(xSensorDataQueue, &receivedData, portMAX_DELAY) == pdTRUE) {
-                    ILI9341_DispString_EN(80, 0, "yes");
+                    ILI9341_DispString_EN(80, 0, "haha");
         
-                if (mode == mode_Sensor_lcd) {
+                if ((mode == mode_Sensor_PC) || (mode == mode_Sensor_lcd)) {
 
                     switch (receivedData.gesture_data) {
                         case eFilckR:
@@ -329,10 +329,10 @@ void StartTask02(void *argument)
 
         for (;;) {
             if ((mode == mode_Sensor_PC) || (mode == mode_Sensor_lcd)) {
+            
                 sensorDataRecv(&info, &nowTimeStamp, &nowTouch);
                 sensorData.touch_data   = getTouchInfo(&info, &lastTimeStamp, &nowTimeStamp, &lastTouch, &nowTouch);
-                sensorData.gesture_data = getGestureInfo(&info);
-                
+                sensorData.gesture_data = getGestureInfo(&info);        
                 xQueueSend(xSensorDataQueue, &sensorData, portMAX_DELAY); // 发送数据到任务1
                 sensorData.gesture_data = 0;
                 sensorData.touch_data   = 0;
@@ -406,12 +406,21 @@ void StartTask05(void *argument)
 {
   /* USER CODE BEGIN StartTask05 */
     /* Infinite loop */
+  
     for (;;) {
-        // 判断现在是不是主�?
+        // 判断现在是不是主�?
+      
         if (page == 0) {
-    
+
             main_page();
-        } else {
+
+        } 
+        else if (page == 3){
+          ILI9341_Init();
+          page = 4;
+        }
+        
+        else if(page == 1){
 
             if(mode==mode_Sensor_lcd){
                 show_page();
@@ -423,7 +432,7 @@ void StartTask05(void *argument)
         
         
         }
-
+        
         osDelay(1);
     }
   /* USER CODE END StartTask05 */

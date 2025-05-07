@@ -28865,7 +28865,7 @@ void gesture_page(){
 }
 
 void show_page(){
-    display_picture(0,0,240,320,showpage);
+    display_picture(0,0,240,100,showpage);
 }
 
 

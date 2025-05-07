@@ -1,0 +1,3 @@
+tool: GCC
+fileName: fatfs.map
+elfName: fatfs.elf

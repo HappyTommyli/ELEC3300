@@ -909,9 +909,9 @@ uint8_t page = 0;//0 is main,1 is gesture page
   /***************************end of file*****************************/
 
 
+extern uint8_t mode;
 
-
-void operating_mainpage (strType_XPT2046_Coordinate *program_num){
+void operating_mainpage (strType_XPT2046_Coordinate *program_num,uint8_t *mode){
 	
 	XPT2046_Get_TouchedPoint(program_num,strXPT2046_TouchPara);
 
@@ -950,7 +950,7 @@ void operating_mainpage (strType_XPT2046_Coordinate *program_num){
 
 }
 
-void operating_gesturepage (strType_XPT2046_Coordinate *program_num){
+void operating_gesturepage (strType_XPT2046_Coordinate *program_num,uint8_t *mode){
 	
 	XPT2046_Get_TouchedPoint(program_num,strXPT2046_TouchPara);
 
@@ -972,11 +972,13 @@ void operating_gesturepage (strType_XPT2046_Coordinate *program_num){
 
 	if((program_num->x>x1_1 && program_num->x<x1_2) && (program_num->y>y1_1 && program_num->y<y1_2)){
 		touchnum = 1;
-		mode = 1;//mode_Sensor_lcd
+		*mode = 1;//mode_Sensor_lcd
+		
+		page = 3;
 	}
 	else if((program_num->x>x2_1 && program_num->x<x2_2) && (program_num->y>y2_1 && program_num->y<y2_2)){
 		touchnum = 2;
-		mode = 2;//mode_Sensor_PC
+		*mode = 2;//mode_Sensor_PC
 	}
 	else if((program_num->x>x3_1 && program_num->x<x3_2) && (program_num->y>y3_1 && program_num->y<y3_2)){
 		touchnum = 3;
@@ -986,12 +988,12 @@ void operating_gesturepage (strType_XPT2046_Coordinate *program_num){
 	switch (touchnum){
 		case 1 : 
 		ILI9341_DispString_EN(0,60,"1");toggle_state(&function1);sprintf(test,"%d",function1);ILI9341_DispString_EN(0,200,test);
-		sprintf(test,"mode is %d",mode);
+		sprintf(test,"mode is %d",*mode);
 		ILI9341_DispString_EN(50,0,test);
 		break;		
 		case 2 : 
 		ILI9341_DispString_EN(0,80,"2");if(function2==0)function2=1;sprintf(test,"%d",function2);ILI9341_DispString_EN(0,220,test);
-		sprintf(test,"mode is %d",mode);
+		sprintf(test,"mode is %d",*mode);
 		ILI9341_DispString_EN(70,0,test);
 		break;
 		case 3 : 
@@ -1004,13 +1006,26 @@ void operating_gesturepage (strType_XPT2046_Coordinate *program_num){
 
 }
   
+void operating_lcddisplaypage (strType_XPT2046_Coordinate *program_num,uint8_t *mode){
+	XPT2046_Get_TouchedPoint(program_num,strXPT2046_TouchPara);
+	int x3_1 = 20; int x3_2 = 200; int y3_1 = 200; int y3_2 = 280;//back µÄÎ»ÖÃ
+	if((program_num->x>x3_1 && program_num->x<x3_2) && (program_num->y>y3_1 && program_num->y<y3_2)){
+		touchnum = 3;
+		page = 1;
+	}
+}
+
 void in_which_page(uint8_t page,strType_XPT2046_Coordinate *program_num){
     if(page == 0){
-		operating_mainpage(program_num);
+		operating_mainpage(program_num,&mode);
     }
-	else{
-		operating_gesturepage(program_num);
+	else if (page == 1){
+		operating_gesturepage(program_num,&mode);
 	}
+	else if (page == 3){
+		operating_lcddisplaypage(program_num,&mode);
+	}
+	
 }
 
 
