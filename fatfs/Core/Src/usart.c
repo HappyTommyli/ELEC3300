@@ -126,9 +126,9 @@ void Send_AT_Command(const char *cmd, uint32_t delay_ms)
 void ESP8266_Config()
 {
 
-    Send_AT_Command("AT+CWMODE=2\r\n", 1000);
+    // Send_AT_Command("AT+CWMODE=2\r\n", 1000);
 
-    Send_AT_Command("AT+CWSAP=\"Ethan_ESP\",\"12345678\",5,3\r\n", 1000);
+    // Send_AT_Command("AT+CWSAP=\"Ethan_ESP\",\"12345678\",5,3\r\n", 1000);
 
     Send_AT_Command("AT+CIPMUX=1\r\n", 500);
 

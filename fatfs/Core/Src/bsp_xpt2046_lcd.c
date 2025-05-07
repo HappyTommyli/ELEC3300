@@ -48,6 +48,16 @@ volatile uint8_t ucXPT2046_TouchFlag = 0;
 uint16_t xstr = INIT_X,ystr = INIT_Y;
 char test[300];
 
+extern  uint8_t touchnum;
+extern  uint8_t function1;
+extern  uint8_t function2;
+extern  uint8_t function3;
+extern  uint8_t function4;
+extern uint8_t mode;
+
+uint8_t page = 0;//0 is main,1 is gesture page
+
+
   
   
   /**
@@ -689,7 +699,7 @@ char test[300];
 			  #endif
 	  }
 	  
-  
+	
   }
 	 
   /**
@@ -817,13 +827,13 @@ char test[300];
 		  return;
 	  
 	  /***在此处编写自己的触摸按下处理应用***/
-	  operating_system(touch);
+	  in_which_page(page,touch);
 	
 	  /*处理触摸画板的选择按钮*/
 	Touch_Button_Down(touch->x,touch->y);
 	
 	/*处理描绘轨迹*/
-	Draw_Trail(touch->pre_x,touch->pre_y,touch->x,touch->y,&brush);
+	// Draw_Trail(touch->pre_x,touch->pre_y,touch->x,touch->y,&brush);
 	  
 	  /***在上面编写自己的触摸按下处理应用***/
 	  
@@ -897,23 +907,21 @@ char test[300];
   
   
   /***************************end of file*****************************/
-  
-  
-  
 
 
-void operating_system (strType_XPT2046_Coordinate *program_num){
+
+
+void operating_mainpage (strType_XPT2046_Coordinate *program_num){
+	
 	XPT2046_Get_TouchedPoint(program_num,strXPT2046_TouchPara);
-	int num = 0;
 
-	//左上
-	int x1_1 = 30; int x1_2 = 110; int y1_1 = 30; int y1_2 = 80;
-	//左下
-	int x2_1 = 30; int x2_2 = 110; int y2_1 = 90; int y2_2 = 140;
-	//右上
-	int x3_1 = 130; int x3_2 = 210; int y3_1 = 30; int y3_2 = 80;
-	//右下
-	int x4_1 = 130; int x4_2 = 210; int y4_1 = 90; int y4_2 = 140;
+	
+
+
+	int x1_1 = 20; int x1_2 = 130; int y1_1 = 50; int y1_2 = 120;
+
+	int x2_1 = 100; int x2_2 = 220; int y2_1 = 130; int y2_2 = 200;
+
 
 	sprintf(test,"%d",program_num->x);
 	ILI9341_DispString_EN(0,0,test);
@@ -922,33 +930,90 @@ void operating_system (strType_XPT2046_Coordinate *program_num){
 
 
 	if((program_num->x>x1_1 && program_num->x<x1_2) && (program_num->y>y1_1 && program_num->y<y1_2)){
-		num = 1;
+		touchnum = 1;
+		page = 1;
 	}
 	else if((program_num->x>x2_1 && program_num->x<x2_2) && (program_num->y>y2_1 && program_num->y<y2_2)){
-		num = 2;
+		touchnum = 2;
+	}
+		//1，挑到不同task
+	switch (touchnum){
+		case 1 : 
+		ILI9341_DispString_EN(0,60,"1");toggle_state(&function1);sprintf(test,"%d",function1);ILI9341_DispString_EN(0,200,test);break;
+		
+		case 2 : 
+		ILI9341_DispString_EN(0,80,"2");toggle_state(&function2);sprintf(test,"%d",function2);ILI9341_DispString_EN(0,220,test);break;
+				
+		default: touchnum = 0;break;
+	}
+
+
+}
+
+void operating_gesturepage (strType_XPT2046_Coordinate *program_num){
+	
+	XPT2046_Get_TouchedPoint(program_num,strXPT2046_TouchPara);
+
+	
+
+
+	int x1_1 = 20; int x1_2 = 200; int y1_1 = 50; int y1_2 = 90;
+
+	int x2_1 = 20; int x2_2 = 200; int y2_1 = 120; int y2_2 = 180;
+
+	int x3_1 = 20; int x3_2 = 200; int y3_1 = 200; int y3_2 = 280;
+
+
+	sprintf(test,"%d",program_num->x);
+	ILI9341_DispString_EN(0,0,test);
+	sprintf(test,"%d",program_num->y);
+	ILI9341_DispString_EN(0,20,test);
+
+
+	if((program_num->x>x1_1 && program_num->x<x1_2) && (program_num->y>y1_1 && program_num->y<y1_2)){
+		touchnum = 1;
+		mode = 1;//mode_Sensor_lcd
+	}
+	else if((program_num->x>x2_1 && program_num->x<x2_2) && (program_num->y>y2_1 && program_num->y<y2_2)){
+		touchnum = 2;
+		mode = 2;//mode_Sensor_PC
 	}
 	else if((program_num->x>x3_1 && program_num->x<x3_2) && (program_num->y>y3_1 && program_num->y<y3_2)){
-		num = 3;
+		touchnum = 3;
+		page = 0;
 	}
-	else if((program_num->x>x4_1 && program_num->x<x4_2) && (program_num->y>y4_1 && program_num->y<y4_2)){
-		num = 4;
-	}
-
-	switch (num){
-
-		case 1 : ILI9341_DispString_EN(0,60,"1");break;
-		case 2 : ILI9341_DispString_EN(0,80,"2");break;
-		case 3 : ILI9341_DispString_EN(0,100,"3");break;
-		case 4 : ILI9341_DispString_EN(0,120,"4");break;
-		default: num = 1;break;
+		//1，挑到不同task
+	switch (touchnum){
+		case 1 : 
+		ILI9341_DispString_EN(0,60,"1");toggle_state(&function1);sprintf(test,"%d",function1);ILI9341_DispString_EN(0,200,test);
+		sprintf(test,"mode is %d",mode);
+		ILI9341_DispString_EN(50,0,test);
+		break;		
+		case 2 : 
+		ILI9341_DispString_EN(0,80,"2");toggle_state(&function2);sprintf(test,"%d",function2);ILI9341_DispString_EN(0,220,test);
+		sprintf(test,"mode is %d",mode);
+		ILI9341_DispString_EN(70,0,test);
+		break;
+		case 3 : 
+		ILI9341_DispString_EN(0,100,"3");toggle_state(&function2);sprintf(test,"%d",function3);ILI9341_DispString_EN(0,240,test);break;
+		
+		
+		default: touchnum = 0;break;
 	}
 
 
 }
-
-void operating_window_Init(){
-	ILI9341_DrawRectangle(30,30,80,50,BLACK);//1左上
-	ILI9341_DrawRectangle(30,90,80,50,BLACK);//2左下
-	ILI9341_DrawRectangle(130,30,80,50,BLACK);//3右上
-	ILI9341_DrawRectangle(130,90,80,50,BLACK);//4右下
+  
+void in_which_page(uint8_t page,strType_XPT2046_Coordinate *program_num){
+    if(page == 0){
+		operating_mainpage(program_num);
+    }
+	else{
+		operating_gesturepage(program_num);
+	}
 }
+
+
+
+
+

@@ -42,10 +42,13 @@ extern "C" {
 #include "bsp_xpt2046_lcd.h"
 #include "MGC3X30.h"
 #include "usart.h"
+#include "lcd.h"
+#include "operating_sysetem.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
+
 
 /* USER CODE END ET */
 

@@ -127,6 +127,9 @@ typedef struct         //校准系数结构体（最终使用）
 
 } strType_XPT2046_TouchPara;
 
+
+  
+
 /******触摸状态机相关******/
 typedef enum
 {
@@ -158,6 +161,7 @@ void XPT2046_TouchEvenHandler(void);
 void Calibrate_or_Get_TouchParaWithFlash(uint8_t LCD_Mode,uint8_t forceCal);
 
 /******************************** 自用函数声明 **********************************/
+void toggle_state(uint8_t *state); 
 void operating_system (strType_XPT2046_Coordinate *program_num);
 void operating_window_Init(void);
 #endif /* __BSP_TOUCH_H */

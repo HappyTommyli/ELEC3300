@@ -5,10 +5,10 @@
 #include "fonts.h"
 //添加如下宏定义
 //=======================================================================================
-#define INIT_X 10	//起始x坐标
-#define INIT_Y 5	//起始y坐标
+#define INIT_X 90	//起始x坐标
+#define INIT_Y 160	//起始y坐标
 #define	PICTURE_WIDTH 64
-#define PICTURE_HEIGHT	64
+#define PICTURE_HEIGHT  64
 #define TOTAL_BYTE	PICTURE_WIDTH*PICTURE_HEIGHT	//一张图片存储的总字节数，一个字节中有8个像素
 #define BUFF_TOTAL_BYTE 512
 //一张图片存储的总位数，即总像素，以300*230的图片为例，像素总个数为：300*230=69000
@@ -18,6 +18,9 @@
 #define TOTAL_BIT		TOTAL_BYTE*8
 //=======================================================================================
 //声名函数
+void Draw_Point(uint16_t x,uint16_t y,uint16_t color);
+uint16_t  RGB888ToRGB565(uint8_t  r , uint8_t g , uint8_t b);
+void LCD_Draw_Picture_Pro(uint16_t *xstr,uint16_t *ystr,uint16_t sendbyte,uint8_t * pic);
 void LCD_Draw_Picture_Pro(uint16_t *xstr,uint16_t *ystr,uint16_t sendbyte,uint8_t * pic);
 
 #endif // LCD_H

@@ -528,6 +528,7 @@ void ILI9341_Init ( void )
 	
 	//设置默认扫描方向，其中 6 模式为大部分液晶例程的默认显示方向  
 	ILI9341_GramScan(LCD_SCAN_MODE);
+	
 }
 
 
@@ -1815,19 +1816,7 @@ void LCD_ClearLine(uint16_t Line)
 }
 /*********************end of file*************************/
 
-void display_picture(uint16_t x,uint16_t y,uint16_t width,uint16_t height,uint16_t *pic)
-{
-	uint32_t i,j;
-	ILI9341_OpenWindow(x,y,width,height);
-	ILI9341_Write_Cmd(CMD_SetPixel);
-	for(i=0;i<height;i++)
-	{
-		for(j=0;j<width;j++)
-		{
-			ILI9341_Write_Data(*pic++); //写入数据
-		}
-	}
-}
+
 
 void LCD_Color_DrawPoint(uint16_t x, uint16_t y, uint16_t color) {
 

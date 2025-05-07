@@ -59,12 +59,19 @@
 void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
-void display_in_main(void);
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+// DWORD fileSize;  
+//   uint8_t buff[BUFF_TOTAL_BYTE];
+//   FRESULT res;
+//   uint8_t x=0;	
+//   extern uint16_t xstr,ystr;
+//   UINT brr;
+//   uint32_t move=0;
+//   FIL text;
 
 
 /* USER CODE END 0 */
@@ -77,6 +84,7 @@ int main(void)
 {
 
   /* USER CODE BEGIN 1 */
+
 
 
   /* USER CODE END 1 */
@@ -109,6 +117,7 @@ int main(void)
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
 
+
   /* USER CODE END 2 */
 
   /* Init scheduler */
@@ -126,6 +135,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {    
+    // XPT2046_TouchEvenHandler();
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
