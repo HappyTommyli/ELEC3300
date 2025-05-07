@@ -1,0 +1,473 @@
+[2025-05-05 14:33:03]	[info] incremental build: 67 source files changed
+These source files will be recompiled
+---
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\MGC3X30.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\bsp_ili9341_lcd.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\bsp_led.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\bsp_spi_flash.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\bsp_xpt2046_lcd.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\dma.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\fonts.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\freertos.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\fsmc.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\gpio.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\i2c.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\main.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\sdio.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\spi.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\stm32f1xx_hal_msp.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\stm32f1xx_it.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\syscalls.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\sysmem.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\system_stm32f1xx.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\tim.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\usart.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\ws_drive_tft.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_cortex.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_dma.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_exti.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_flash.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_flash_ex.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio_ex.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_i2c.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_mmc.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_nand.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_nor.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_pccard.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_pwr.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc_ex.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_sd.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_spi.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_sram.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim_ex.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_uart.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_fsmc.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_sdmmc.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\FATFS\App\fatfs.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\FATFS\Target\bsp_driver_sd.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\FATFS\Target\fatfs_platform.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\FATFS\Target\user_diskio.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\diskio.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\drivers\sd_diskio.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\ff.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\ff_gen_drv.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\option\ccsbcs.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\option\syscall.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\croutine.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\list.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM3\port.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\queue.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\stream_buffer.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\tasks.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\timers.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\startup_stm32f103xe.s': object (.o) file not exist
+
+[2025-05-05 14:33:05]	compilation failed at : "c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\option\ccsbcs.c", exit code: 1
+command: 
+  "C:\Users\47468\.eide\tools\gcc_arm\bin\arm-none-eabi-gcc.exe" -c -xc -mthumb -std=c11 -ICore/Inc -IDrivers/STM32F1xx_HAL_Driver/Inc/Legacy -IDrivers/STM32F1xx_HAL_Driver/Inc -IDrivers/CMSIS/Device/ST/STM32F1xx/Include -IDrivers/CMSIS/Include -IFATFS/Target -IFATFS/App -IMiddlewares/Third_Party/FatFs/src -IMiddlewares/Third_Party/FatFs/src/drivers -IMiddlewares/Third_Party/FreeRTOS/Source/include -IMiddlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -IMiddlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -DUSE_HAL_DRIVER -DSTM32F103xE -mcpu=cortex-m3 -Og -Wall -g --specs=nosys.specs --specs=nano.specs -ffunction-sections -fdata-sections -o ./build/Debug/.obj/Middlewares/Third_Party/FatFs/src/option/ccsbcs.o -MMD ./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c:497:2: error: #error This file is not needed in current configuration. Remove from the project.
+  497 | #error This file is not needed in current configuration. Remove from the project.
+      |  ^~~~~
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c: In function 'ff_convert':
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c:514:29: error: 'Tbl' undeclared (first use in this function)
+  514 |    c = (chr >= 0x100) ? 0 : Tbl[chr - 0x80];
+      |                             ^~~
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c:514:29: note: each undeclared identifier is reported only once for each function it appears in
+
+[2025-05-05 14:34:15]	[info] incremental build: 6 source files changed
+These source files will be recompiled
+---
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\main.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\option\ccsbcs.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\stream_buffer.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\tasks.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\timers.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\startup_stm32f103xe.s': object (.o) file not exist
+
+[2025-05-05 14:34:16]	compilation failed at : "c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\option\ccsbcs.c", exit code: 1
+command: 
+  "C:\Users\47468\.eide\tools\gcc_arm\bin\arm-none-eabi-gcc.exe" -c -xc -mthumb -std=c11 -ICore/Inc -IDrivers/STM32F1xx_HAL_Driver/Inc/Legacy -IDrivers/STM32F1xx_HAL_Driver/Inc -IDrivers/CMSIS/Device/ST/STM32F1xx/Include -IDrivers/CMSIS/Include -IFATFS/Target -IFATFS/App -IMiddlewares/Third_Party/FatFs/src -IMiddlewares/Third_Party/FatFs/src/drivers -IMiddlewares/Third_Party/FreeRTOS/Source/include -IMiddlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -IMiddlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -DUSE_HAL_DRIVER -DSTM32F103xE -mcpu=cortex-m3 -Og -Wall -g --specs=nosys.specs --specs=nano.specs -ffunction-sections -fdata-sections -o ./build/Debug/.obj/Middlewares/Third_Party/FatFs/src/option/ccsbcs.o -MMD ./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c:497:2: error: #error This file is not needed in current configuration. Remove from the project.
+  497 | #error This file is not needed in current configuration. Remove from the project.
+      |  ^~~~~
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c: In function 'ff_convert':
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c:514:29: error: 'Tbl' undeclared (first use in this function)
+  514 |    c = (chr >= 0x100) ? 0 : Tbl[chr - 0x80];
+      |                             ^~~
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c:514:29: note: each undeclared identifier is reported only once for each function it appears in
+
+[2025-05-05 14:35:20]	compilation failed at : "c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\option\ccsbcs.c", exit code: 1
+command: 
+  "C:\Users\47468\.eide\tools\gcc_arm\bin\arm-none-eabi-gcc.exe" -c -xc -mthumb -std=c11 -ICore/Inc -IDrivers/STM32F1xx_HAL_Driver/Inc/Legacy -IDrivers/STM32F1xx_HAL_Driver/Inc -IDrivers/CMSIS/Device/ST/STM32F1xx/Include -IDrivers/CMSIS/Include -IFATFS/Target -IFATFS/App -IMiddlewares/Third_Party/FatFs/src -IMiddlewares/Third_Party/FatFs/src/drivers -IMiddlewares/Third_Party/FreeRTOS/Source/include -IMiddlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -IMiddlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -DUSE_HAL_DRIVER -DSTM32F103xE -mcpu=cortex-m3 -Og -Wall -g --specs=nosys.specs --specs=nano.specs -ffunction-sections -fdata-sections -o ./build/Debug/.obj/Middlewares/Third_Party/FatFs/src/option/ccsbcs.o -MMD ./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c:497:2: error: #error This file is not needed in current configuration. Remove from the project.
+  497 | #error This file is not needed in current configuration. Remove from the project.
+      |  ^~~~~
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c: In function 'ff_convert':
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c:514:29: error: 'Tbl' undeclared (first use in this function)
+  514 |    c = (chr >= 0x100) ? 0 : Tbl[chr - 0x80];
+      |                             ^~~
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c:514:29: note: each undeclared identifier is reported only once for each function it appears in
+
+[2025-05-05 14:36:05]	[info] incremental build: 2 source files changed
+These source files will be recompiled
+---
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\main.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\option\ccsbcs.c': object (.o) file not exist
+
+[2025-05-05 14:36:05]	compilation failed at : "c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\option\ccsbcs.c", exit code: 1
+command: 
+  "C:\Users\47468\.eide\tools\gcc_arm\bin\arm-none-eabi-gcc.exe" -c -xc -mthumb -std=c11 -ICore/Inc -IDrivers/STM32F1xx_HAL_Driver/Inc/Legacy -IDrivers/STM32F1xx_HAL_Driver/Inc -IDrivers/CMSIS/Device/ST/STM32F1xx/Include -IDrivers/CMSIS/Include -IFATFS/Target -IFATFS/App -IMiddlewares/Third_Party/FatFs/src -IMiddlewares/Third_Party/FatFs/src/drivers -IMiddlewares/Third_Party/FreeRTOS/Source/include -IMiddlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -IMiddlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -DUSE_HAL_DRIVER -DSTM32F103xE -mcpu=cortex-m3 -Og -Wall -g --specs=nosys.specs --specs=nano.specs -ffunction-sections -fdata-sections -o ./build/Debug/.obj/Middlewares/Third_Party/FatFs/src/option/ccsbcs.o -MMD ./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c:497:2: error: #error This file is not needed in current configuration. Remove from the project.
+  497 | #error This file is not needed in current configuration. Remove from the project.
+      |  ^~~~~
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c: In function 'ff_convert':
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c:514:29: error: 'Tbl' undeclared (first use in this function)
+  514 |    c = (chr >= 0x100) ? 0 : Tbl[chr - 0x80];
+      |                             ^~~
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c:514:29: note: each undeclared identifier is reported only once for each function it appears in
+
+[2025-05-05 14:37:27]	compilation failed at : "c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\option\ccsbcs.c", exit code: 1
+command: 
+  "C:\Users\47468\.eide\tools\gcc_arm\bin\arm-none-eabi-gcc.exe" -c -xc -mthumb -std=c11 -ICore/Inc -IDrivers/STM32F1xx_HAL_Driver/Inc/Legacy -IDrivers/STM32F1xx_HAL_Driver/Inc -IDrivers/CMSIS/Device/ST/STM32F1xx/Include -IDrivers/CMSIS/Include -IFATFS/Target -IFATFS/App -IMiddlewares/Third_Party/FatFs/src -IMiddlewares/Third_Party/FatFs/src/drivers -IMiddlewares/Third_Party/FreeRTOS/Source/include -IMiddlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -IMiddlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -DUSE_HAL_DRIVER -DSTM32F103xE -mcpu=cortex-m3 -Og -Wall -g --specs=nosys.specs --specs=nano.specs -ffunction-sections -fdata-sections -o ./build/Debug/.obj/Middlewares/Third_Party/FatFs/src/option/ccsbcs.o -MMD ./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c
+   at unify_builder.Program.compileByMulThread(Int32 thrNum, CmdInfo[] cmds_, List`1 errLogs)
+   at unify_builder.Program.Main(String[] args_)
+---
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c:497:2: error: #error This file is not needed in current configuration. Remove from the project.
+  497 | #error This file is not needed in current configuration. Remove from the project.
+      |  ^~~~~
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c: In function 'ff_convert':
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c:514:29: error: 'Tbl' undeclared (first use in this function)
+  514 |    c = (chr >= 0x100) ? 0 : Tbl[chr - 0x80];
+      |                             ^~~
+./Middlewares/Third_Party/FatFs/src/option/ccsbcs.c:514:29: note: each undeclared identifier is reported only once for each function it appears in
+
+[2025-05-05 14:40:00]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+c:/users/47468/.eide/tools/gcc_arm/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/ld.exe: ./build/Debug/.obj/Middlewares/Third_Party/FatFs/src/option/syscall.o: in function `ff_cre_syncobj':
+c:\stm32_project\ELEC3300\ELEC3300\fatfs/./Middlewares/Third_Party/FatFs/src/option/syscall.c:26: undefined reference to `osSemaphoreCreate'
+c:/users/47468/.eide/tools/gcc_arm/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/ld.exe: ./build/Debug/.obj/Middlewares/Third_Party/FatFs/src/option/syscall.o: in function `ff_req_grant':
+c:\stm32_project\ELEC3300\ELEC3300\fatfs/./Middlewares/Third_Party/FatFs/src/option/syscall.c:65: undefined reference to `osSemaphoreWait'
+Memory region         Used Size  Region Size  %age Used
+             RAM:       17320 B        64 KB     26.43%
+           FLASH:       35208 B       512 KB      6.72%
+collect2.exe: error: ld returned 1 exit status
+
+
+[2025-05-05 14:41:11]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+c:/users/47468/.eide/tools/gcc_arm/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/ld.exe:c:/stm32_project/ELEC3300/ELEC3300/fatfs/STM32F103XX_FLASH.ld:105: non constant or forward reference address expression for section .ARM.extab
+collect2.exe: error: ld returned 1 exit status
+
+
+[2025-05-05 14:42:03]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+c:/users/47468/.eide/tools/gcc_arm/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/ld.exe: ./build/Debug/.obj/Middlewares/Third_Party/FatFs/src/option/syscall.o: in function `ff_cre_syncobj':
+c:\stm32_project\ELEC3300\ELEC3300\fatfs/./Middlewares/Third_Party/FatFs/src/option/syscall.c:26: undefined reference to `osSemaphoreCreate'
+c:/users/47468/.eide/tools/gcc_arm/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/ld.exe: ./build/Debug/.obj/Middlewares/Third_Party/FatFs/src/option/syscall.o: in function `ff_req_grant':
+c:\stm32_project\ELEC3300\ELEC3300\fatfs/./Middlewares/Third_Party/FatFs/src/option/syscall.c:65: undefined reference to `osSemaphoreWait'
+Memory region         Used Size  Region Size  %age Used
+             RAM:       17320 B        64 KB     26.43%
+           FLASH:       35208 B       512 KB      6.72%
+collect2.exe: error: ld returned 1 exit status
+
+
+[2025-05-05 14:43:00]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+c:/users/47468/.eide/tools/gcc_arm/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/ld.exe:c:/stm32_project/ELEC3300/ELEC3300/fatfs/STM32F103XX_FLASH.ld:105: non constant or forward reference address expression for section .ARM.extab
+collect2.exe: error: ld returned 1 exit status
+
+
+[2025-05-05 14:47:59]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+c:/users/47468/.eide/tools/gcc_arm/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/ld.exe: ./build/Debug/.obj/Middlewares/Third_Party/FatFs/src/option/syscall.o: in function `ff_cre_syncobj':
+c:\stm32_project\ELEC3300\ELEC3300\fatfs/./Middlewares/Third_Party/FatFs/src/option/syscall.c:26: undefined reference to `osSemaphoreCreate'
+c:/users/47468/.eide/tools/gcc_arm/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/ld.exe: ./build/Debug/.obj/Middlewares/Third_Party/FatFs/src/option/syscall.o: in function `ff_req_grant':
+c:\stm32_project\ELEC3300\ELEC3300\fatfs/./Middlewares/Third_Party/FatFs/src/option/syscall.c:65: undefined reference to `osSemaphoreWait'
+Memory region         Used Size  Region Size  %age Used
+             RAM:       17320 B        64 KB     26.43%
+           FLASH:       35208 B       512 KB      6.72%
+collect2.exe: error: ld returned 1 exit status
+
+
+[2025-05-07 09:41:56]	[info] incremental build: 64 source files changed
+These source files will be recompiled
+---
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\MGC3X30.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\bsp_ili9341_lcd.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\bsp_led.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\bsp_spi_flash.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\CMSIS\Device\ST\STM32F1xx\Include\stm32f1xx.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\bsp_xpt2046_lcd.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\dma.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\main.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\fonts.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\fonts.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\freertos.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\fsmc.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\main.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\gpio.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\i2c.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\main.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\lcd.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\main.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\operating_system.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\palette.c': object (.o) file not exist
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\sdio.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\spi.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\main.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\stm32f1xx_hal_msp.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\main.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\stm32f1xx_it.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\main.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\system_stm32f1xx.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\tim.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\main.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\usart.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_cortex.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_dma.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_exti.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_flash.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_flash_ex.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_gpio_ex.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_i2c.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_mmc.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_nand.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_nor.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_pccard.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_pwr.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_rcc_ex.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_sd.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_spi.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_sram.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_tim_ex.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_hal_uart.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_fsmc.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Src\stm32f1xx_ll_sdmmc.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\FATFS\App\fatfs.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\FATFS\Target\bsp_driver_sd.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\FATFS\Target\fatfs_platform.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Drivers\STM32F1xx_HAL_Driver\Inc\stm32f1xx_hal.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\diskio.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\FATFS\Target\ffconf.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\drivers\sd_diskio.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\FATFS\Target\ffconf.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\ff.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\FATFS\Target\ffconf.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\ff_gen_drv.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\FATFS\Target\ffconf.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\option\syscall.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\FATFS\Target\ffconf.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS_V2\cmsis_os2.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\FreeRTOSConfig.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\croutine.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\FreeRTOSConfig.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\event_groups.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\FreeRTOSConfig.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\list.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\FreeRTOSConfig.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\portable\GCC\ARM_CM3\port.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\FreeRTOSConfig.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\portable\MemMang\heap_4.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\FreeRTOSConfig.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\queue.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\FreeRTOSConfig.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\stream_buffer.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\FreeRTOSConfig.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\tasks.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\FreeRTOSConfig.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FreeRTOS\Source\timers.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\FreeRTOSConfig.h' has been changed.
+
+[2025-05-07 09:42:00]	[done]
+	build successfully !
+
+[2025-05-07 09:54:38]	[info] incremental build: 2 source files changed
+These source files will be recompiled
+---
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\freertos.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\usart.c': source file has been changed.
+
+[2025-05-07 09:54:39]	compilation failed at : "c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\freertos.c", exit code: 1
+command: 
+  "C:\Users\47468\.eide\tools\gcc_arm\bin\arm-none-eabi-gcc.exe" -c -xc -mthumb -std=c11 -ICore/Inc -IDrivers/STM32F1xx_HAL_Driver/Inc/Legacy -IDrivers/STM32F1xx_HAL_Driver/Inc -IDrivers/CMSIS/Device/ST/STM32F1xx/Include -IDrivers/CMSIS/Include -IFATFS/Target -IFATFS/App -IMiddlewares/Third_Party/FatFs/src -IMiddlewares/Third_Party/FatFs/src/drivers -IMiddlewares/Third_Party/FreeRTOS/Source/include -IMiddlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -IMiddlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -DUSE_HAL_DRIVER -DSTM32F103xE -mcpu=cortex-m3 -Og -Wall -g --specs=nosys.specs --specs=nano.specs -ffunction-sections -fdata-sections -o ./build/Debug/.obj/Core/Src/freertos.o -MMD ./Core/Src/freertos.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./Core/Src/freertos.c: In function 'StartDefaultTask':
+./Core/Src/freertos.c:272:29: error: 'sensorData' undeclared (first use in this function); did you mean 'SensorData_t'?
+  272 |                     switch (sensorData.gesture_data) {
+      |                             ^~~~~~~~~~
+      |                             SensorData_t
+./Core/Src/freertos.c:272:29: note: each undeclared identifier is reported only once for each function it appears in
+
+[2025-05-07 09:55:09]	[info] incremental build: 2 source files changed
+These source files will be recompiled
+---
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\freertos.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\usart.c': source file has been changed.
+
+[2025-05-07 09:55:10]	[done]
+	build successfully !
+
+[2025-05-07 09:55:38]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\freertos.c': source file has been changed.
+
+[2025-05-07 09:55:39]	[done]
+	build successfully !
+
+[2025-05-07 10:06:00]	[info] incremental build: 3 source files changed
+These source files will be recompiled
+---
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\freertos.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\gpio.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\stm32f1xx_it.c': source file has been changed.
+
+[2025-05-07 10:06:01]	compilation failed at : "c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\freertos.c", exit code: 1
+command: 
+  "C:\Users\47468\.eide\tools\gcc_arm\bin\arm-none-eabi-gcc.exe" -c -xc -mthumb -std=c11 -ICore/Inc -IDrivers/STM32F1xx_HAL_Driver/Inc/Legacy -IDrivers/STM32F1xx_HAL_Driver/Inc -IDrivers/CMSIS/Device/ST/STM32F1xx/Include -IDrivers/CMSIS/Include -IFATFS/Target -IFATFS/App -IMiddlewares/Third_Party/FatFs/src -IMiddlewares/Third_Party/FatFs/src/drivers -IMiddlewares/Third_Party/FreeRTOS/Source/include -IMiddlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -IMiddlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM3 -DUSE_HAL_DRIVER -DSTM32F103xE -mcpu=cortex-m3 -Og -Wall -g --specs=nosys.specs --specs=nano.specs -ffunction-sections -fdata-sections -o ./build/Debug/.obj/Core/Src/freertos.o -MMD ./Core/Src/freertos.c
+   at unify_builder.Program.Main(String[] args_)
+---
+./Core/Src/freertos.c: In function 'StartTask02':
+./Core/Src/freertos.c:419:1: error: expected declaration or statement at end of input
+  419 | }
+      | ^
+At top level:
+./Core/Src/freertos.c:404:6: warning: 'StartTask05' defined but not used [-Wunused-function]
+  404 | void StartTask05(void *argument)
+      |      ^~~~~~~~~~~
+./Core/Src/freertos.c:384:6: warning: 'StartTask04' defined but not used [-Wunused-function]
+  384 | void StartTask04(void *argument)
+      |      ^~~~~~~~~~~
+./Core/Src/freertos.c:355:6: warning: 'StartTask03' defined but not used [-Wunused-function]
+  355 | void StartTask03(void *argument)
+      |      ^~~~~~~~~~~
+
+[2025-05-07 10:06:18]	[info] incremental build: 3 source files changed
+These source files will be recompiled
+---
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\freertos.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\gpio.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\stm32f1xx_it.c': source file has been changed.
+
+[2025-05-07 10:06:19]	link failed !, exit code: 1
+   at unify_builder.Program.Main(String[] args_)
+---
+c:/users/47468/.eide/tools/gcc_arm/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/ld.exe: ./build/Debug/.obj/Core/Src/freertos.o: in function `MX_FREERTOS_Init':
+c:\stm32_project\ELEC3300\ELEC3300\fatfs/./Core/Src/freertos.c:192: undefined reference to `StartTask03'
+c:/users/47468/.eide/tools/gcc_arm/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/ld.exe: c:\stm32_project\ELEC3300\ELEC3300\fatfs/./Core/Src/freertos.c:192: undefined reference to `StartTask04'
+c:/users/47468/.eide/tools/gcc_arm/bin/../lib/gcc/arm-none-eabi/10.2.1/../../../../arm-none-eabi/bin/ld.exe: c:\stm32_project\ELEC3300\ELEC3300\fatfs/./Core/Src/freertos.c:192: undefined reference to `StartTask05'
+Memory region         Used Size  Region Size  %age Used
+             RAM:       34584 B        64 KB     52.77%
+           FLASH:       37604 B       512 KB      7.17%
+collect2.exe: error: ld returned 1 exit status
+
+
+[2025-05-07 10:07:49]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\freertos.c': source file has been changed.
+
+[2025-05-07 10:07:49]	[done]
+	build successfully !
+
+[2025-05-07 10:14:34]	[info] incremental build: 2 source files changed
+These source files will be recompiled
+---
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\bsp_xpt2046_lcd.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\freertos.c': source file has been changed.
+
+[2025-05-07 10:14:35]	[done]
+	build successfully !
+
+[2025-05-07 10:14:58]	[done]
+	build successfully !
+
+[2025-05-07 10:18:13]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\freertos.c': source file has been changed.
+
+[2025-05-07 10:18:14]	[done]
+	build successfully !
+
+[2025-05-07 10:20:27]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\freertos.c': source file has been changed.
+
+[2025-05-07 10:20:28]	[done]
+	build successfully !
+
+[2025-05-07 10:20:51]	[done]
+	build successfully !
+
+[2025-05-07 10:22:42]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\freertos.c': source file has been changed.
+
+[2025-05-07 10:22:43]	[done]
+	build successfully !
+
+[2025-05-07 10:23:42]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\freertos.c': source file has been changed.
+
+[2025-05-07 10:23:43]	[done]
+	build successfully !
+
+[2025-05-07 10:24:19]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\freertos.c': source file has been changed.
+
+[2025-05-07 10:24:20]	[done]
+	build successfully !
+
+[2025-05-07 12:41:12]	[info] incremental build: 26 source files changed
+These source files will be recompiled
+---
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\MGC3X30.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\bsp_spi_flash.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\bsp_xpt2046_lcd.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\dma.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\freertos.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\fsmc.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\gpio.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\i2c.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\lcd.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\main.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\operating_system.c': source file has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\palette.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\sdio.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\spi.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\stm32f1xx_hal_msp.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\stm32f1xx_it.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\tim.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\usart.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\FATFS\App\fatfs.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\FATFS\Target\bsp_driver_sd.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\FATFS\Target\fatfs_platform.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\FATFS\Target\fatfs_platform.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\FATFS\Target\fatfs_platform.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\diskio.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\drivers\sd_diskio.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\ff.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\ff_gen_drv.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Middlewares\Third_Party\FatFs\src\option\syscall.c': dependence 'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Inc\operating_sysetem.h' has been changed.
+
+[2025-05-07 12:41:16]	[done]
+	build successfully !
+
+[2025-05-07 12:45:58]	[info] incremental build: 1 source files changed
+These source files will be recompiled
+---
+'c:\stm32_project\ELEC3300\ELEC3300\fatfs\Core\Src\gpio.c': source file has been changed.
+
+[2025-05-07 12:45:58]	[done]
+	build successfully !
+
+[2025-05-07 12:46:17]	[done]
+	build successfully !
+
