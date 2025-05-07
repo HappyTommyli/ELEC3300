@@ -30,8 +30,6 @@
 #include <stdio.h>
 #include "fatfs.h"
 
-
-
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -41,8 +39,7 @@ typedef struct {
     eTouchInfo_t touch_data;
 } SensorData_t;
 
-
-uint8_t open                 = 0;
+uint8_t open = 0;
 
 // extern I2C_HandleTypeDef hi2c2;
 /* USER CODE END PTD */
@@ -50,8 +47,7 @@ uint8_t open                 = 0;
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 
-QueueHandle_t xSensorDataQueue     = NULL;
-
+QueueHandle_t xSensorDataQueue = NULL;
 
 #define mode_default    0
 #define mode_Sensor_lcd 1
@@ -78,10 +74,6 @@ extern uint8_t page;
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
 
-
-
-
-
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -100,7 +92,7 @@ osThreadId_t switch_windowHandle;
 const osThreadAttr_t switch_window_attributes = {
   .name = "switch_window",
   .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityNormal2,
+  .priority = (osPriority_t) osPriorityNormal1,
 };
 /* Definitions for myTask03 */
 osThreadId_t myTask03Handle;
@@ -127,7 +119,6 @@ const osThreadAttr_t myTask05_attributes = {
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
 
-
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void *argument);
@@ -146,15 +137,10 @@ void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN Init */
 
-
-  ILI9341_Init();
-  XPT2046_Init();
-  MX_FATFS_Init();
-  MX_USART1_UART_Init();
-  
-
-
-
+    ILI9341_Init();
+    XPT2046_Init();
+    MX_FATFS_Init();
+    MX_USART1_UART_Init();
 
   /* USER CODE END Init */
 
@@ -173,8 +159,6 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_QUEUES */
     /* add queues, ... */
-
-    
 
     xSensorDataQueue = xQueueCreate(1, sizeof(SensorData_t));
 
@@ -220,73 +204,103 @@ void StartDefaultTask(void *argument)
   /* USER CODE BEGIN StartDefaultTask */
 
     SensorData_t receivedData;
-    // uint16_t rec_Data;
- 
-
-    for (;;) {  
-        if (mode == mode_Sensor_PC) {                    
+  
+    for (;;) {      
+                
             if (xQueueReceive(xSensorDataQueue, &receivedData, portMAX_DELAY) == pdTRUE) {
-                switch (receivedData.gesture_data) {
-                    case eFilckR:
-                        /* code */
-                        //  ILI9341_DispString_EN(0, 0, "r");
-                         send_data("2");
-                         gesture_dir_arrow("right.bin");
+                    ILI9341_DispString_EN(80, 0, "yes");
+        
+                if (mode == mode_Sensor_lcd) {
 
+                    switch (receivedData.gesture_data) {
+                        case eFilckR:
+                            /* code */
+                             ILI9341_DispString_EN(100, 0, "r");
 
-                        break;
-                    case eFilckL:
-                        /* code */
-                        // ILI9341_DispString_EN(0, 0, "l");
-                        send_data("1");
-                        gesture_dir_arrow("left.bin");
-                        break;
-                    case eFilckU:
-                        /* code */
-                        // ILI9341_DispString_EN(0, 0, "u");
-                        send_data("3");
-                        gesture_dir_arrow("up.bin");
-                        break;
-                    case eFilckD:
-                        /* code */
-                        // ILI9341_DispString_EN(0, 0, "d");
-                        send_data("4");
-                        gesture_dir_arrow("down.bin");
-                        break;
-                    default:
-                        break;
+                            gesture_dir_arrow("right.bin");
+
+                            break;
+                        case eFilckL:
+                            /* code */
+                            // ILI9341_DispString_EN(0, 0, "l");
+
+                            gesture_dir_arrow("left.bin");
+                            break;
+                        case eFilckU:
+                            /* code */
+                            // ILI9341_DispString_EN(0, 0, "u");
+
+                            gesture_dir_arrow("up.bin");
+                            break;
+                        case eFilckD:
+                            /* code */
+                            // ILI9341_DispString_EN(0, 0, "d");
+
+                            gesture_dir_arrow("down.bin");
+                            break;
+                        default:
+                            break;
+                    }
+                    switch (receivedData.touch_data) {
+                        case eTouchCenter:
+                            /* code */
+                            ILI9341_DispString_EN(0, 20, "c");
+
+                            break;
+                        case eTapCenter:
+                            ILI9341_DispString_EN(0, 20, "e");
+                            break;
+                        case eTouchDown:
+                            /* code */
+                            ILI9341_Clear(0, 20, 8, 16);
+                            break;
+                        case eTouchUp:
+                            /* code */
+
+                            break;
+                        case eTouchLeft:
+                            /* code */
+
+                            break;
+                        case eTouchRight:
+
+                            break;
+                        default:
+
+                            break;
+                    }
                 }
-                switch (receivedData.touch_data) {
-                    case eTouchCenter:
-                        /* code */
-                        ILI9341_DispString_EN(0,20,"c");
+                if (mode == mode_Sensor_PC) {
+                    switch (receivedData.gesture_data) {
+                        case 2:
+                            /* code */
+                            ILI9341_DispString_EN(0, 0, "r");
+                            send_data("2");
+                            break;
+                        case 3:
+                            /* code */
+                            ILI9341_DispString_EN(0, 0, "l");
+                            send_data("1");
+                            break;
+                        case 4:
+                            /* code */
+                            ILI9341_DispString_EN(0, 0, "u");
+                            send_data("3");
+                            break;
+                        case 5:
+                            /* code */
+                            ILI9341_DispString_EN(0, 0, "d");
+                            send_data("4");
+                            break;
+                        default:
+                            break;
+                    }
 
-                        break;
-                    case  eTapCenter:
-                        ILI9341_DispString_EN(0,20,"e");     
-                        break;    
-                    case eTouchDown:
-                        /* code */
-                        ILI9341_Clear(0,20,8,16);
-                        break;
-                    case eTouchUp:
-                        /* code */
-
-                        break;
-                    case eTouchLeft:
-                        /* code */
-
-                        break;
-                    case eTouchRight:
-
-                        break;
-                    default:
-                        
-                        break;
+                  
+                    // info.gestureInfo        = 0;
                 }
             }
-        }
-
+        
 
         osDelay(1);
     }
@@ -303,67 +317,30 @@ void StartDefaultTask(void *argument)
 void StartTask02(void *argument)
 {
   /* USER CODE BEGIN StartTask02 */
-  sInfo_t info;
-  uint16_t lastTimeStamp;
-  uint16_t nowTimeStamp;
-  uint16_t lastTouch;
-  uint16_t nowTouch;
-  SensorData_t sensorData;
- 
-  
-  //open MGC3X30
-  begin();
+    sInfo_t info;
+    uint16_t lastTimeStamp;
+    uint16_t nowTimeStamp;
+    uint16_t lastTouch;
+    uint16_t nowTouch;
+    SensorData_t sensorData;
 
-  for (;;) {
+    // open MGC3X30
+    begin();
 
-      if ((mode == mode_Sensor_PC)||(mode == mode_Sensor_lcd)) {
-          sensorDataRecv(&info, &nowTimeStamp, &nowTouch);
-          sensorData.touch_data   = getTouchInfo(&info, &lastTimeStamp, &nowTimeStamp, &lastTouch, &nowTouch);
-          sensorData.gesture_data = getGestureInfo(&info);
-          if (mode == mode_Sensor_lcd) {
-
-              xQueueSend(xSensorDataQueue, &sensorData, portMAX_DELAY);  //发送数据到任务1
-              sensorData.gesture_data = 0;
-              sensorData.touch_data = 0;
-              //info.gestureInfo        = 0;
-              vTaskDelay(pdMS_TO_TICKS(100));
-          }
-
-
-          if (mode == mode_Sensor_PC) {
-              switch (sensorData.gesture_data) {
-                  case 2:
-                      /* code */
-                      ILI9341_DispString_EN(0, 0, "r");
-                      send_data("2");
-                      break;
-                  case 3:
-                      /* code */
-                      ILI9341_DispString_EN(0, 0, "l");
-                      send_data("1");
-                      break;
-                  case 4:
-                      /* code */
-                      ILI9341_DispString_EN(0, 0, "u");
-                      send_data("3");
-                      break;
-                  case 5:
-                      /* code */
-                      ILI9341_DispString_EN(0, 0, "d");
-                      send_data("4");
-                      break;
-                  default:
-                      break;
-              }
-
-              sensorData.gesture_data = 0;
-              //info.gestureInfo        = 0;
-          }
-      }
-  }
-
-
-  for (;;) { vTaskDelay(pdMS_TO_TICKS(100)); }
+        for (;;) {
+            if ((mode == mode_Sensor_PC) || (mode == mode_Sensor_lcd)) {
+                sensorDataRecv(&info, &nowTimeStamp, &nowTouch);
+                sensorData.touch_data   = getTouchInfo(&info, &lastTimeStamp, &nowTimeStamp, &lastTouch, &nowTouch);
+                sensorData.gesture_data = getGestureInfo(&info);
+                
+                xQueueSend(xSensorDataQueue, &sensorData, portMAX_DELAY); // 发送数据到任务1
+                sensorData.gesture_data = 0;
+                sensorData.touch_data   = 0;
+              
+                // info.gestureInfo        = 0;
+                vTaskDelay(pdMS_TO_TICKS(100));
+            }
+        }
 
   /* USER CODE END StartTask02 */
 }
@@ -380,19 +357,19 @@ void StartTask03(void *argument)
 {
   /* USER CODE BEGIN StartTask03 */
     /* Infinite loop */
-  //wifi
 
     for (;;) {
 
-      if(function2 == 1){
-        HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);
-        ESP8266_Config();
-        ILI9341_DispString_EN(120,160,"wifiopen");
-        //funct mode
-      }
-    
-      //touch function来判断是否回去
-      osDelay(1);
+        if (function2 == 1) {
+            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_8, GPIO_PIN_SET);
+            ESP8266_Config();
+            ILI9341_DispString_EN(120, 160, "wifiopen");
+            function2=3;
+          
+        }
+
+      
+        osDelay(1);
     }
 
   /* USER CODE END StartTask03 */
@@ -400,64 +377,60 @@ void StartTask03(void *argument)
 
 /* USER CODE BEGIN Header_StartTask04 */
 /**
-* @brief Function implementing the myTask04 thread.
-* @param argument: Not used
-* @retval None
-*/
+ * @brief Function implementing the myTask04 thread.
+ * @param argument: Not used
+ * @retval None
+ */
 /* USER CODE END Header_StartTask04 */
 void StartTask04(void *argument)
 {
   /* USER CODE BEGIN StartTask04 */
-  
-  
-  /* Infinite loop */
-  for(;;)
-  { 
-    XPT2046_TouchEvenHandler();
-    // ILI9341_DispChar_EN(80,0,mode);
-    osDelay(35);
-  }
+
+    /* Infinite loop */
+    for (;;) {
+        XPT2046_TouchEvenHandler();
+        // ILI9341_DispChar_EN(80,0,mode);
+        osDelay(35);
+    }
   /* USER CODE END StartTask04 */
 }
 
 /* USER CODE BEGIN Header_StartTask05 */
 /**
-* @brief Function implementing the myTask05 thread.
-* @param argument: Not used
-* @retval None
-*/
+ * @brief Function implementing the myTask05 thread.
+ * @param argument: Not used
+ * @retval None
+ */
 /* USER CODE END Header_StartTask05 */
 void StartTask05(void *argument)
 {
   /* USER CODE BEGIN StartTask05 */
-  /* Infinite loop */
-  for(;;)
-  {
-    //判断现在是不是主页
-    if(page == 0){
-      main_page();
+    /* Infinite loop */
+    for (;;) {
+        // 判断现在是不是主�?
+        if (page == 0) {
+    
+            main_page();
+        } else {
+
+            if(mode==mode_Sensor_lcd){
+                show_page();
+            }else{
+                 gesture_page();
+
+            }
+           
+        
+        
+        }
+
+        osDelay(1);
     }
-    else{
-      gesture_page();
-
-    }
-    
-
-
-    
-    
-    osDelay(1);
-  }
   /* USER CODE END StartTask05 */
 }
 
 /* Private application code --------------------------------------------------*/
 /* USER CODE BEGIN Application */
-
-
-
-
-
 
 /* USER CODE END Application */
 
